@@ -15,4 +15,31 @@ public class ControladorInicio {
 		MV.setViewName("index");
 		return MV;
 	}
+	
+	
+	@RequestMapping("Main.html")
+	public ModelAndView eventoRedireccionarMain()
+	{
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("Main");
+		return MV;
+	}
+	
+	@RequestMapping("Clientes_Grilla.html")
+	public ModelAndView eventoRedireccionarClientes_Grilla()
+	{
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("Clientes_Grilla");
+		return MV;
+	}
+	
+	
+	@RequestMapping("Clientes_ABM.html")
+	public ModelAndView eventoRedireccionarClientes_ABM()
+	{
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("Clientes_ABM");
+		return MV;
+	}
+	
 }
