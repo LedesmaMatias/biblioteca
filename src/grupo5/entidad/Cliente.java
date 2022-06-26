@@ -54,4 +54,8 @@ public class Cliente implements Serializable {
 	
 	@Column(name="fecha_nacimiento")
 	private Date fecha_nacimiento;
+	
+	public Cliente() {
+		
+	}
 }
