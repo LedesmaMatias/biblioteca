@@ -11,7 +11,7 @@
         <a class="nav-link" href="Clientes_Grilla.html">Clientes <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Bibliotecas</a>
+        <a class="nav-link" href="Biblioteca_Grilla.html">Biblioteca</a>
       </li>
         <li class="nav-item">
         <a class="nav-link" href="#">Libros</a>

@@ -24,7 +24,7 @@
                       </div>
                     
                  <div class="col-auto ">
-                    <button type="button" class="btn btn-lg btn-primary m-2">Bibliotecas</button>
+                 	 <a class="btn btn-lg btn-primary m-2" href="Biblioteca_Grilla.html">Biblioteca </a>
                       </div>
                 <div class="col-auto ">
                    <button type="button" class="btn btn-lg btn-primary m-2">Libros</button>

@@ -1,5 +1,5 @@
 
-  <footer class="text-center text-white bg-info mt-3" >
+  <footer class="text-center text-white bg-info mt-3" style="position: fixed; width: 100%; bottom: 0;" >
   <!-- Grid container -->
  
   <!-- Grid container -->
