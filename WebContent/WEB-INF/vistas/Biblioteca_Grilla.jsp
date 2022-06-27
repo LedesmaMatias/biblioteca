@@ -23,11 +23,15 @@
 					<form action="Biblioteca_ABM.html" method="get" class="w-100">
 						<div class="form-row">
 							<div class="form-group col-md-2">
-								<label for="txtLibro">Nombre del libro</label>
-								<input type="text" class="form-control" id="txtLibro" placeholder="Libro">
+								<label for="ddlLibro">Estado de libro </label>
+								<select class="form-control" id="ddlLibro">
+								    <option>Seleccionar estado</option> 
+								    <option>En biblioteca</option> 
+								    <option>Prestado</option> 
+								</select>
 							</div>
 							<div class="form-group col-md-2 mt-4">
-								<button type="submit" class="btn btn-success">Buscar</button>
+								<button type="submit" class="btn btn-success">Mostrar</button>
 							</div>
 							<div class="form-group col-md-2 mt-4">
 								<button type="submit" name="btnAgregar" class="btn btn-success">Agregar libro en biblioteca</button>
