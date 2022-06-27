@@ -23,10 +23,36 @@
      <div class="col-12 mt-2">
      	<h2 class="font-weight-bold text-center text-info"> Clientes </h2>
      </div>
- 
+     
+       <% 
+       //No sirve no le den bola
+	    String clase_estilo = "text-succses";
+       	String Msj = "";
+       	
+	    if(request.getParameter("hdErrorCodigo")!=null) 
+	    {
+	    	 if(request.getParameter("hdErrorCodigo") != "0") 
+	 	    {
+	    		clase_estilo = "Danger";
+	    		Msj = request.getParameter("hdErrorCodigo");
+	 	    }
+	    	 
+	    }
+	    
+	    %>
+	    
+	    
+     
+   <div class="col-12 mt-2">
+     	<label class="font-weight-bold text-center text-success  "> 
+     	${ErroMsj}    
+     	</label>
+     </div>
+     
+     
      <div class="col-12 mt-2">
     
-  <form class=" w-100">
+  <form  action="Clientes_ABM.html" method="get" class=" w-100" >
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="txtNombre">Nombre</label>
@@ -47,7 +73,7 @@
     </div>
     
     <div class="form-group col-md-2 mt-4">
-         <a type="submit" class="btn btn-success " href="Clientes_ABM.html" >Agregar Cliente</a>
+         <button type="submit" name="btnAgregar" class="btn btn-success ">Agregar Cliente</button>
     </div>
     
   </div>

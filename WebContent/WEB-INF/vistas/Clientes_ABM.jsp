@@ -23,22 +23,38 @@
 	 
 	 
 	     <div class="col-12 mt-2">
-	     	<h2 class="font-weight-bold text-center text-info"> Clientes Alta/Editar </h2>
+	     
+	    <% 
+	    String titulo = "Editar";
+	    String Action = "Clientes_Alta.html";
+	    if(request.getParameter("btnAgregar")!=null) 
+	    {
+	    	titulo= "Alta";
+	    	Action ="Clientes_Alta.html";
+	    }
+	    %>
+	     	<h2 class="font-weight-bold text-center text-info"> Clientes <%=titulo %> </h2>
+	     	
+	     	
 	     </div>
 	 
 	     <div class="col-12 mt-2">
 	     
+	      <div class="col-12 mt-2">
+     	<label class="font-weight-bold text-center text-danger  "> 
+     	${ErroMsj}    
+     	</label>
+     </div>
 	     
-	     
-<form>
+<form action="<%=Action %>" method="get" >
   <div class="form-row justify-content-center">
     <div class="form-group col-md-4">
       <label for="txtNombre">Nombre</label>
-      <input type="text" class="form-control" id="txtNombre" placeholder="Nombre">
+      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre">
     </div>
     <div class="form-group col-md-4">
       <label for="txtApellido">Apellido</label>
-      <input type="text" class="form-control" id="txtApellido" placeholder="Apellido">
+      <input type="text" class="form-control" name="txtApellido" placeholder="Apellido">
     </div>
    </div>
    
@@ -46,12 +62,12 @@
  
       <div class="form-group col-md-4">
       <label for="txtDNI">DNI</label>
-      <input type="text" class="form-control" id="txtDNI" placeholder="DNI">
+      <input type="text" class="form-control" name="txtDNI" placeholder="DNI">
     </div>
     <div class="form-group col-md-4">
       <label for="cboNacio">Nacionalidad</label>
-      <select id="cboNacio" class="form-control">
-        <option selected>Argentina</option>
+      <select name="cboNacio" class="form-control">
+        <option selected value=1>Argentina</option>
         <option>...</option>
       </select>
     </div>
@@ -62,11 +78,11 @@
 
    <div class="form-group col-md-4">
     <label for="txteMail">Email</label>
-    <input type="text" class="form-control" id="txteMail" placeholder="email@emil.com">
+    <input type="text" class="form-control" name="txteMail" placeholder="email@emil.com">
   </div>
    <div class="form-group col-md-4">
     <label for="txtLocalidad">Localidad</label>
-    <input type="text" class="form-control" id="txtLocalidad" placeholder="Localidad">
+    <input type="text" class="form-control" name="txtLocalidad" placeholder="Localidad">
   </div>
    </div>
 
@@ -74,12 +90,12 @@
     <div class="form-row justify-content-center">
 
      <div class="form-group col-md-4">
-    <label for="txtTelefono">Email</label>
-    <input type="text" class="form-control" id="txtTelefono" placeholder="Telefono">
+    <label for="txtTelefono">Telefono</label>
+    <input type="text" class="form-control" name="txtTelefono" placeholder="Telefono">
   </div>
    <div class="form-group col-md-4">
     <label for="txtNac">Fecha de nacimiento</label>
-    <input type="text" class="form-control" id="txtNac" placeholder="Fecha. Nac.">
+    <input type="text" class="form-control" name="txtNac" placeholder="Fecha. Nac.">
   </div>
 
    </div>
@@ -97,7 +113,6 @@
    </div>
    
  
-  
   
 </form>
 

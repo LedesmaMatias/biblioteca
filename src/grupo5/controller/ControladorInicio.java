@@ -1,8 +1,10 @@
 package grupo5.controller;
 
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import grupo5.daoImp.*;
 
 @Controller
 public class ControladorInicio {
@@ -22,24 +24,16 @@ public class ControladorInicio {
 	{
 		ModelAndView MV = new ModelAndView();
 		MV.setViewName("Main");
+		
+		//Cargo las tablas parametros
+		NacionalidadDao.CargarNacionalidades();
+		
+		
+		
 		return MV;
 	}
 	
-	@RequestMapping("Clientes_Grilla.html")
-	public ModelAndView eventoRedireccionarClientes_Grilla()
-	{
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("Clientes_Grilla");
-		return MV;
-	}
-	
-	
-	@RequestMapping("Clientes_ABM.html")
-	public ModelAndView eventoRedireccionarClientes_ABM()
-	{
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("Clientes_ABM");
-		return MV;
-	}
+
+
 	
 }
