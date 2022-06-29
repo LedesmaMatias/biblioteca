@@ -50,11 +50,11 @@
   <div class="form-row justify-content-center">
     <div class="form-group col-md-4">
       <label for="txtNombre">Nombre</label>
-      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre">
+      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" value="${cliente.nombre}">
     </div>
     <div class="form-group col-md-4">
       <label for="txtApellido">Apellido</label>
-      <input type="text" class="form-control" name="txtApellido" placeholder="Apellido">
+      <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" value="${cliente.apellido}">
     </div>
    </div>
    
@@ -76,10 +76,13 @@
   
     <div class="form-row justify-content-center">
 
-   <div class="form-group col-md-4">
-    <label for="txteMail">Email</label>
-    <input type="text" class="form-control" name="txteMail" placeholder="email@emil.com">
+   
+  
+  <div class="form-group col-md-4">
+    <label for="txtDireccion">Direccion</label>
+    <input type="text" class="form-control" name="txtDireccion" placeholder="Direccion">
   </div>
+  
    <div class="form-group col-md-4">
     <label for="txtLocalidad">Localidad</label>
     <input type="text" class="form-control" name="txtLocalidad" placeholder="Localidad">
@@ -93,13 +96,25 @@
     <label for="txtTelefono">Telefono</label>
     <input type="text" class="form-control" name="txtTelefono" placeholder="Telefono">
   </div>
+  
+  <div class="form-group col-md-4">
+    <label for="txteMail">Email</label>
+    <input type="text" class="form-control" name="txteMail" placeholder="email@emil.com">
+  </div>
+   
+   </div>
+   
+      <div class="form-row justify-content-center">
+
+    
    <div class="form-group col-md-4">
     <label for="txtNac">Fecha de nacimiento</label>
     <input type="text" class="form-control" name="txtNac" placeholder="Fecha. Nac.">
   </div>
+<div class="form-group col-md-4">
+    </div>
 
    </div>
-   
    
     <div class="form-row justify-content-center">
 
@@ -107,7 +122,11 @@
      <button type="submit" class="btn btn-danger ">Cancelar</button>
   </div>
    <div class="form-group col-md-4">
+   
+      
     <button type="submit" class="btn btn-primary">Aceptar</button>
+    
+    
   </div>
 
    </div>
