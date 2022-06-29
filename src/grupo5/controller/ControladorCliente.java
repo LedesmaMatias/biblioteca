@@ -1,5 +1,7 @@
 package grupo5.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,10 +16,29 @@ import grupo5.entidad.Result;
 public class ControladorCliente {
 
 	@RequestMapping("Clientes_Grilla.html")
-	public ModelAndView eventoRedireccionarClientes_Grilla() {
+	public ModelAndView eventoRedireccionarClientes_Grilla(String txtNombre, String txtApellido, Integer txtDNI) {
 		ModelAndView MV = new ModelAndView();
-		MV.setViewName("Clientes_Grilla");
 
+		if (txtNombre == null) {
+			txtNombre = "";
+		}
+
+		if (txtApellido == null) {
+			txtApellido = "";
+		}
+
+		if (txtDNI == null) {
+			txtDNI = 0;
+		}
+
+		List<Cliente> cl = ClienteDao.ObtenerClientes(0, txtDNI, txtNombre, txtApellido);
+
+		MV.addObject("lista", cl);
+		MV.addObject("txtApellido", txtApellido);
+		MV.addObject("txtDNI", txtDNI);
+		MV.addObject("txtNombre", txtNombre);
+
+		MV.setViewName("Clientes_Grilla");
 		return MV;
 	}
 
@@ -54,11 +75,24 @@ public class ControladorCliente {
 			ErrorCodigo = r.getCodigo();
 			ErrorMsj = r.getMensaje();
 			mv.setViewName("Clientes_ABM");
+
 		}
 
 		mv.addObject("ErroCodigo", ErrorCodigo);
 		mv.addObject("ErroMsj", ErrorMsj);
 
+		return mv;
+	}
+
+	@RequestMapping("Clientes_Editar.html")
+	public ModelAndView eventoRedireccionarClientes_ABM_Editar(Integer IdCliente) {
+		ModelAndView mv = new ModelAndView();
+
+		Cliente cl = ClienteDao.ObtenerClienteById(IdCliente);
+
+		mv.addObject("Cliente", cl);
+
+		mv.setViewName("Clientes_ABM");
 		return mv;
 	}
 

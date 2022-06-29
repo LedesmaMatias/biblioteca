@@ -22,7 +22,7 @@ public class ClienteDao implements IdaoCliente {
 		Conexion ch = new Conexion();
 		Session session = ch.abrirConexion();
 		session.beginTransaction();
-		List<Cliente> rl = session.createQuery("from Clientes").list();
+		List<Cliente> rl = session.createQuery("from Cliente").list();
 		System.out.println("Number of Elements: " + rl.size());
 
 		if (rl.size() != 0) {
@@ -35,6 +35,60 @@ public class ClienteDao implements IdaoCliente {
 		return rl;
 	}
 
+	public static List<Cliente> ObtenerClientes(Integer Id, Integer DNI, String Nombre, String Apellido) {
+		Boolean hayRegistros = false;
+
+		Conexion ch = new Conexion();
+		Session session = ch.abrirConexion();
+		session.beginTransaction();
+
+		// Traigo el Cliente con el Id especifico y si el Id es 0 traigo todos
+		String Query = "select c from Cliente c where " + "(c.ID_cliente = " + Id + " or 0 = " + Id + ")  ";
+
+		// Para los demas campos consulto solo si no vienen vacios
+		if (DNI != 0) {
+			Query += " and (c.DNI = " + DNI + ")";
+		}
+
+		if (Nombre != "") {
+			Query += " and (c.nombre like  '%" + Nombre + "%')";
+
+		}
+
+		if (Apellido != "") {
+			Query += " and (c.apellido like '%" + Apellido + "%')";
+
+		}
+
+		List<Cliente> rl = session.createQuery(Query).list();
+
+		if (rl.size() != 0) {
+			hayRegistros = true;
+		}
+
+		session.getTransaction().commit();
+		session.close();
+
+		return rl;
+	}
+
+	public static Cliente ObtenerClienteById(Integer Id) {
+
+		Conexion ch = new Conexion();
+		Session session = ch.abrirConexion();
+		session.beginTransaction();
+
+		// Traigo el Cliente con el Id especifico y si el Id es 0 traigo todos
+		String Query = "select c from Cliente c where " + " c.ID_cliente = " + Id + "  ";
+
+		Cliente c = (Cliente) session.createQuery(Query);
+
+		session.getTransaction().commit();
+		session.close();
+
+		return c;
+	}
+
 	public static Boolean VerificarDatos(int DNI) {
 		Boolean hayRegistros = false;
 
@@ -42,8 +96,6 @@ public class ClienteDao implements IdaoCliente {
 		Session session = ch.abrirConexion();
 		session.beginTransaction();
 		List<Object[]> rl = session.createQuery("select c from Cliente c where c.DNI = " + DNI).list();
-
-		System.out.println("Number of Elements: " + rl.size());
 
 		if (rl.size() != 0) {
 			hayRegistros = true;
