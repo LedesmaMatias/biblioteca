@@ -18,7 +18,7 @@
 	 
 	     <div class="col-12 mt-2">
 	     
-	     	<h2 class="font-weight-bold text-center text-info"> Libro en biblioteca </h2>
+	     	<h2 class="font-weight-bold text-center text-info"> Libros en biblioteca </h2>
 	     	
 	     	
 	     </div>

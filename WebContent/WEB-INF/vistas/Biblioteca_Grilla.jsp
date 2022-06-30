@@ -20,24 +20,27 @@
 				<div class="col-12 mt-2">
 				</div>
 				<div class="col-12 mt-2">
-					<form action="Biblioteca_ABM.html" method="get" class="w-100">
+					<div>
+						<form action="Biblioteca_ABM.html" method="get" class="w-100">
 						<div class="form-row">
-							<div class="form-group col-md-2">
+							<div class="form-group col-md-2 ml-4">
 								<label for="ddlLibro">Estado de libro </label>
 								<select class="form-control" id="ddlLibro">
-								    <option>Seleccionar estado</option> 
+								    <option>Seleccionar estado</option>
+								    <option>Todos</option>
 								    <option>En biblioteca</option> 
-								    <option>Prestado</option> 
+								    <option>Prestados</option> 
 								</select>
 							</div>
-							<div class="form-group col-md-2 mt-4">
+							<div class="form-group mt-4">
 								<button type="submit" class="btn btn-success">Mostrar</button>
 							</div>
-							<div class="form-group col-md-2 mt-4">
+							<div class="form-group col-md-4 mt-4">
 								<button type="submit" name="btnAgregar" class="btn btn-success">Agregar libro en biblioteca</button>
 							</div>
 						</div>
 					</form>
+					</div>
 					<div class="col-12 mt-2 mb-3">
 						<div class="bg-white border table-responsive table-striped">
 							<table class="table">

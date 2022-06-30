@@ -14,6 +14,13 @@ public class ControladorBiblioteca {
 		return MV;
 	}
 	
+	@RequestMapping("Libros_Grilla.html")
+	public ModelAndView eventoRedireccionarLibros_Grilla() {
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("Libros_Grilla");
+		return MV;
+	}
+	
 	@RequestMapping("Biblioteca_ABM.html")
 	public ModelAndView eventoRedireccionarBiblioteca_ABM() {
 		ModelAndView MV = new ModelAndView();
