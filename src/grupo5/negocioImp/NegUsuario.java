@@ -3,13 +3,13 @@ package grupo5.negocioImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import grupo5.dao.IdaoUsuario;
-import grupo5.negocio.InegUsuario;
+import grupo5.dao.IUsuariosDao;
+import grupo5.negocio.INegUsuarios;
 
-@Service("servicioUsuario")
-public class NegUsuario implements InegUsuario{
-	
+@Service("UsuariosServicio")
+public class NegUsuario implements INegUsuarios {
+
 	@Autowired
-	private IdaoUsuario daoUsuario;
+	private IUsuariosDao UsuarioDao;
 
 }
