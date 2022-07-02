@@ -9,14 +9,14 @@
      	 <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbBiblioteca?createDatabaseIfNotExist=true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
-        <mapping class="grupo5.entidad.Autor"/>
-        <mapping class="grupo5.entidad.Biblioteca"/>
-        <mapping class="grupo5.entidad.Cliente"/>
-        <mapping class="grupo5.entidad.Genero"/>
-        <mapping class="grupo5.entidad.Libro"/>
-        <mapping class="grupo5.entidad.Nacionalidad"/>
-        <mapping class="grupo5.entidad.Prestamo"/>
+        <mapping class="grupo5.entidad.Autores"/>
+        <mapping class="grupo5.entidad.Bibliotecas"/>
+        <mapping class="grupo5.entidad.Clientes"/>
+        <mapping class="grupo5.entidad.Generos"/>
+        <mapping class="grupo5.entidad.Libros"/>
+        <mapping class="grupo5.entidad.Nacionalidades"/>
+        <mapping class="grupo5.entidad.Prestamos"/>
     </session-factory>
 </hibernate-configuration>
