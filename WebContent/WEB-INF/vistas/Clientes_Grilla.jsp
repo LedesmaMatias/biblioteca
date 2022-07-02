@@ -1,7 +1,6 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -80,7 +79,7 @@
     </div>
     <div class="form-group col-md-2 mt-4 text-right">
     
-       <a href="Clientes_ABM.html"  class="btn btn-success" >Agregar <i class="fas fa-plus"></i></a>
+       <a href="Clientes_ABM.html?btnAgregar=true"  class="btn btn-success" >Agregar <i class="fas fa-plus"></i></a>
            
     </div>
     
@@ -112,26 +111,28 @@
             </thead>
             <tbody>
        
+        
                 
                 <c:forEach var="dato" items="${lista}" >
                   <tr>
-                    <td>${dato.ID_cliente}</td>
-                    <td>${dato.nombre}</td>
-                    <td>${dato.apellido}</td>
-                    <td>${dato.DNI}</td>
-                    <td>${dato.nacionalidad.descripcion}</td>
-                    <td>${dato.email}</td>
-                    <td>${dato.direccion}</td>
-                    <td>${dato.localidad}</td>
-                    <td>${dato.telefono}</td>
-                    <td>${dato.fecha_nacimiento}</td>
+                    <td>${dato.getId()}</td>
+                   <td>${dato.getNombre()}</td>
+                    <td>${dato.getApellido()}</td>
+                    <td>${dato.getDNI()}</td>
+                    <td>${dato.getNacionalidad().descripcion}</td>
+                    <td>${dato.getEmail()}</td>
+                    <td>${dato.getDireccion()}</td>
+                    <td>${dato.getLocalidad()}</td>
+                    <td>${dato.getTelefono()}</td>
+                    <td>${dato.getFechaNacimiento()}</td>             
                     
                         <td>
-                    <a href="Clientes_Editar.html?IdCliente=${dato.ID_cliente}"  class="btn btn-success" ><i class="fas fa-edit"></i></a>
+                    <a href="Clientes_ABM_Editar.html?IdCliente=${dato.getId()}"  class="btn btn-success" ><i class="fas fa-edit"></i></a>
                      <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
             
                     </td>
                 </tr> 
+                
                 </c:forEach>         
             </tbody>
         </table>
