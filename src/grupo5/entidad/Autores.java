@@ -90,6 +90,13 @@ public class Autores implements Serializable {
 		Email = email;
 		Nacionalidad = nacionalidad;
 	}
+	
+	public Autores(String nombre, String apellido, String email, grupo5.entidad.Nacionalidades nacionalidad) {
+		Nombre = nombre;
+		Apellido = apellido;
+		Email = email;
+		Nacionalidad = nacionalidad;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

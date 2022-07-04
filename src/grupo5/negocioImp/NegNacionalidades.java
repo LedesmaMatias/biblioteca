@@ -52,11 +52,23 @@ public class NegNacionalidades implements INegNacionalidades {
 
 			Nacionalidades n4 = new Nacionalidades();
 			n4.setDescripcion("Colombia");
+			
+			Nacionalidades n5 = new Nacionalidades();
+			n5.setDescripcion("España");
+			
+			Nacionalidades n6 = new Nacionalidades();
+			n6.setDescripcion("Inglaterra");
+			
+			Nacionalidades n7 = new Nacionalidades();
+			n7.setDescripcion("Polonia");
 
 			NacioLista.add(n1);
 			NacioLista.add(n2);
 			NacioLista.add(n3);
 			NacioLista.add(n4);
+			NacioLista.add(n5);
+			NacioLista.add(n6);
+			NacioLista.add(n7);
 
 			Boolean Respuesta = NacionalidadDao.CargarTablaDefault(NacioLista); // Cargo la tabla deefault
 
