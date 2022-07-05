@@ -38,13 +38,9 @@
 
 
                 <div class="col-auto ">
-                    <button type="button" class="btn btn-lg btn-primary m-2">Prestamos</button>
+                    <a class="btn btn-lg btn-primary m-2" href="Prestamos_Grilla.html">Prestamos </a>
                 </div>
-                      
-                <div class="col-auto ">
-                   <button type="button" class="btn btn-lg btn-secondary m-2">Parametros</button>
-
-                </div>
+                     
                    
 
               

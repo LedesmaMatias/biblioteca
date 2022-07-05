@@ -17,7 +17,7 @@
         <a class="nav-link" href="Libros_Grilla.html">Libros</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">Prestamos</a>
+        <a class="nav-link" href="Prestamos_Grilla.html">Prestamos</a>
       </li>
       
      
@@ -27,7 +27,7 @@
     
     <form class="form-inline my-2 my-lg-0">
       
-      <button class="btn btn-info my-2 my-sm-0" type="submit">Login</button>
+      <a class="btn btn-info my-2 my-sm-0" href="Login.html">Login</a>
       
     </form>
   </div>

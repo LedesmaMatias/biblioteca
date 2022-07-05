@@ -57,11 +57,6 @@
       <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" value="${cliente.getNombre()}">
     </div>
     
-     <div class="form-group col-md-4">
-      <label for="txtNombre">Nomsdfbre</label>
-      <input type="text" class="form-control" name="txtNombreas" placeholder="Nombreasd" value="${cliente.getId()}">
-    </div>
-    
     <div class="form-group col-md-4">
       <label for="txtApellido">Apellido</label>
       <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" value="${cliente.getApellido()}">

@@ -28,6 +28,13 @@ public class ControladorInicio {
 		MV.setViewName("index");
 		return MV;
 	}
+	
+	@RequestMapping("Login.html")
+	public ModelAndView eventoRedireccionarLogin() {
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("login");
+		return MV;
+	}
 
 	@RequestMapping("Main.html")
 	public ModelAndView eventoRedireccionarMain() {
