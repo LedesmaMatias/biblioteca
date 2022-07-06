@@ -1,6 +1,8 @@
 package grupo5.negocioImp;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,10 @@ public class NegAutores implements INegAutores {
 	private INegNacionalidades negNacionalidades;
 
 	@Override
-	public Result cargatTablaDefault() {
-		Result r = new Result(0, "");
+	public Result cargarTablaDefault() {
+		Result r = new Result(0, "Autores agregados correctamente");
 		if(autoresDao.contarEnTabla() == 0) {
-			Set<Autores> autores = new HashSet<>();
+			List<Autores> autores = new ArrayList<Autores>();
 			
 			autores.add(new Autores("Alfonso", "Rojo","alfonsorojo@gmail.com" , negNacionalidades.ObtenerPorId(5)));
 			autores.add(new Autores("Arthur", "Conan Doyle","arthurConan@gmail.com" , negNacionalidades.ObtenerPorId(6)));
@@ -36,10 +38,11 @@ public class NegAutores implements INegAutores {
 			boolean b = autoresDao.cargarTablaDefault(autores);
 			
 			if (!b) {
-				r.setCodigo(1);
+				r.setCodigo(2);
 				r.setMensaje("Ocurrio un error al cargar la tabla de autores por defecto");
 			}
 		} else {
+			r.setCodigo(1);
 			r.setMensaje("Ya existen Autores en la base de datos");
 		}
 		return r;
@@ -47,7 +50,7 @@ public class NegAutores implements INegAutores {
 
 	@Override
 	public Autores obtenerPorId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Autores autor = autoresDao.obtenerPorId(id);
+		return autor;
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import grupo5.entidad.Result;
 import grupo5.negocio.INegAutores;
+import grupo5.negocio.INegGeneros;
 import grupo5.negocioImp.NegAutores;
 import grupo5.negocioImp.NegNacionalidades;
 
@@ -21,6 +22,10 @@ public class ControladorInicio {
 	@Autowired
 	@Qualifier("AutoresServicio")
 	private NegAutores negAutores;
+	
+	@Autowired
+	@Qualifier("GenerosServicio")
+	private INegGeneros negGeneros;
 
 	@RequestMapping("toIndex.html")
 	public ModelAndView eventoRedireccionarPag1() {
@@ -44,7 +49,9 @@ public class ControladorInicio {
 		// Cargo las tablas parametros
 		Result r = NegNacionalidad.CargarTablaDefault();
 		r.println();
-		r = negAutores.cargatTablaDefault();
+		r = negAutores.cargarTablaDefault();
+		r.println();
+		r = negGeneros.cargarTablaDefault();
 		r.println();
 
 		return MV;

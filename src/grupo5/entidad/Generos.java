@@ -34,6 +34,11 @@ public class Generos implements Serializable {
 		this.Id = ID;
 		this.Descripcion = descripcion;
 	}
+	
+	public Generos(String descripcion) {
+		
+		this.Descripcion = descripcion;
+	}
 
 	@Override
 	public String toString() {

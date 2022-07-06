@@ -5,7 +5,7 @@ import grupo5.entidad.Result;
 
 public interface INegAutores {
 
-	public Result cargatTablaDefault();
+	public Result cargarTablaDefault();
 	
 	public Autores obtenerPorId(int id);
 }

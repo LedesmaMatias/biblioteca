@@ -23,7 +23,7 @@ public class AutoresDao implements IAutoresDao {
 
 
 	@Override
-	public boolean cargarTablaDefault(Set<Autores> autores) {
+	public boolean cargarTablaDefault(List<Autores> autores) {
 		Session session = conexion.abrirConexion();
 		Transaction t = session.beginTransaction();
 		boolean aux = true;
@@ -44,8 +44,10 @@ public class AutoresDao implements IAutoresDao {
 
 	@Override
 	public Autores obtenerPorId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = conexion.abrirConexion();
+		Autores autor = (Autores) session.createQuery("FROM Autores WHERE Id=" + id).uniqueResult();
+		conexion.cerrarSession();
+		return autor;
 	}
 
 
@@ -54,6 +56,7 @@ public class AutoresDao implements IAutoresDao {
 		Session session = conexion.abrirConexion();
 		List<Autores> autores = new ArrayList<Autores>();
 		autores = session.createQuery("from Autores").list();
+		conexion.cerrarSession();
 		return autores.size();
 	}
 }
