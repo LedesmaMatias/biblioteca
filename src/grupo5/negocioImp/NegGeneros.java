@@ -21,10 +21,10 @@ public class NegGeneros implements INegGeneros {
 	public Result cargarTablaDefault() {
 		Result r = new Result(0, "Generos agregados correctamente");
 		if(!generosDao.hayRegistros()) {
-			Set<Generos> generos = new HashSet<>();
+			Set<Generos> generos = new HashSet<Generos>();
 			generos.add(new Generos("Policial"));
 			generos.add(new Generos("Suspenso"));
-			generos.add(new Generos("Fantasía"));
+			generos.add(new Generos("Fantasia"));
 			
 			if(!generosDao.cargarTablaDefault(generos)) {
 				r.setCodigo(2);

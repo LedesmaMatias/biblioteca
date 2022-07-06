@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import grupo5.entidad.Result;
 import grupo5.negocio.INegAutores;
 import grupo5.negocio.INegGeneros;
+import grupo5.negocio.INegLibros;
 import grupo5.negocioImp.NegAutores;
 import grupo5.negocioImp.NegNacionalidades;
 
@@ -26,6 +27,10 @@ public class ControladorInicio {
 	@Autowired
 	@Qualifier("GenerosServicio")
 	private INegGeneros negGeneros;
+	
+	@Autowired
+	@Qualifier("LibrosServicio")
+	private INegLibros negLibros;
 
 	@RequestMapping("toIndex.html")
 	public ModelAndView eventoRedireccionarPag1() {
@@ -47,14 +52,20 @@ public class ControladorInicio {
 		MV.setViewName("Main");
 
 		// Cargo las tablas parametros
+		cargarTablasPorDefecto();
+
+		return MV;
+	}
+	
+	private void cargarTablasPorDefecto() {
 		Result r = NegNacionalidad.CargarTablaDefault();
 		r.println();
 		r = negAutores.cargarTablaDefault();
 		r.println();
 		r = negGeneros.cargarTablaDefault();
 		r.println();
-
-		return MV;
+		r = negLibros.cargarTablaDefault();
+		r.println();
 	}
 
 }

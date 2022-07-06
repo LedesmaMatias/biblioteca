@@ -27,7 +27,7 @@ public class Libros implements Serializable {
 	@Id
 	@Column(name = "ISBN")
 
-	private int ISBN;
+	private String ISBN;
 
 	@Column(name = "Titulo")
 	private String Titulo;
@@ -44,7 +44,7 @@ public class Libros implements Serializable {
 	@Column(name = "Descripcion")
 	private String Descripcion;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(cascade = { CascadeType.REFRESH })
 	@JoinTable(name = "Libros_x_Generos", joinColumns = { @JoinColumn(name = "ISBN_Libro") }, inverseJoinColumns = {
 			@JoinColumn(name = "IdGenero") })
 	private Set<Generos> Generos = new HashSet<Generos>();
@@ -56,11 +56,11 @@ public class Libros implements Serializable {
 	public Libros() {
 	}
 
-	public int getISBN() {
+	public String getISBN() {
 		return ISBN;
 	}
 
-	public void setISBN(int iSBN) {
+	public void setISBN(String iSBN) {
 		ISBN = iSBN;
 	}
 
@@ -124,7 +124,7 @@ public class Libros implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Libros(int iSBN, String titulo, Date fechaLanzamiento, String idioma, int cantPaginas, String descripcion,
+	public Libros(String iSBN, String titulo, Date fechaLanzamiento, String idioma, int cantPaginas, String descripcion,
 			Set<grupo5.entidad.Generos> generos, Autores autor) {
 		super();
 		ISBN = iSBN;

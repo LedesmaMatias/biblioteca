@@ -28,7 +28,7 @@ public class NegAutores implements INegAutores {
 	@Override
 	public Result cargarTablaDefault() {
 		Result r = new Result(0, "Autores agregados correctamente");
-		if(autoresDao.contarEnTabla() == 0) {
+		if(!autoresDao.hayRegistros()) {
 			List<Autores> autores = new ArrayList<Autores>();
 			
 			autores.add(new Autores("Alfonso", "Rojo","alfonsorojo@gmail.com" , negNacionalidades.ObtenerPorId(5)));

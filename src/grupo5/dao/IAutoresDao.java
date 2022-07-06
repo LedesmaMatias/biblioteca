@@ -8,7 +8,7 @@ import grupo5.entidad.Autores;
 
 public interface IAutoresDao {
 	
-	public int contarEnTabla(); 
+	public boolean hayRegistros(); 
 	
 	public boolean cargarTablaDefault(List<Autores> autores);
 	

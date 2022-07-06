@@ -22,7 +22,6 @@ public class GenerosDao implements IGeneroDao{
 		Session session = conexion.abrirConexion();
 		long cantidad = (long)session.createQuery("select count(*) from Generos g").uniqueResult();
 		conexion.cerrarSession();
-		System.out.println("ESTA ES LA CANTIDAD DE GENEROS = " + cantidad);
 		if(cantidad>0) {
 			return true;
 		}
@@ -57,7 +56,7 @@ public class GenerosDao implements IGeneroDao{
 	@Override
 	public Generos obtenerPorDescripcion(String descripcion) {
 		Session session = conexion.abrirConexion();
-		Generos genero = (Generos) session.createQuery("FROM Generos WHERE Descripcion=" + descripcion ).uniqueResult();
+		Generos genero = (Generos) session.createQuery("FROM Generos WHERE Descripcion='" + descripcion + "'" ).uniqueResult();
 		conexion.cerrarSession();
 		return genero;
 	}

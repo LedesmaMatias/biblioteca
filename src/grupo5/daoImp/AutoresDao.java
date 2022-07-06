@@ -52,11 +52,13 @@ public class AutoresDao implements IAutoresDao {
 
 
 	@Override
-	public int contarEnTabla() {
+	public boolean hayRegistros() {
 		Session session = conexion.abrirConexion();
-		List<Autores> autores = new ArrayList<Autores>();
-		autores = session.createQuery("from Autores").list();
+		long cantidad = (long)session.createQuery("select count(*) from Autores a").uniqueResult();
 		conexion.cerrarSession();
-		return autores.size();
+		if(cantidad>0) {
+			return true;
+		}
+		return false;
 	}
 }
