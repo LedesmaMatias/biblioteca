@@ -38,5 +38,11 @@ public class Bibliotecas implements Serializable {
 	public Bibliotecas() {
 
 	}
+	
+	public Bibliotecas(Libros libro, Date fechaAlta) {
+		this.Libro = libro;
+		this.FechaAlta = fechaAlta;
+		this.Estado = 1;
+	}
 
 }

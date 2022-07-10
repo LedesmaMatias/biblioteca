@@ -27,26 +27,26 @@
 	     
 	      <div class="col-12 mt-2">
      	<label class="font-weight-bold text-center text-danger  "> 
-     	${ErroMsj}    
+     	${ErrorMsj}    
      	</label>
      </div>
 	     
-<form action="" method="get" >
+<form action="Biblioteca_Alta.html" method="post" >
   <div class="form-row justify-content-center">
     <div class="form-group col-md-4">
-      <label for="txtLibro">ISBN Libro</label>
-      <input type="text" class="form-control" name="txtLibro" placeholder="ISBN">
+      <label class="form-label" for="txtLibro">ISBN Libro</label>
+      <input type="text" class="form-control" name="txtLibro" placeholder="ISBN" required>
     </div>
     <div class="form-group col-md-4">
-      <label for="dateFecha">Fecha de alta</label>
-      <input type="date" class="form-control" name="dateFecha">
+      <label class="form-label" for="dateFecha">Fecha de alta</label>
+      <input type="date" class="form-control" name="dateFecha" required>
     </div>
    </div>
    
     <div class="form-row justify-content-center">
 
      <div class="form-group col-md-4">
-     <button type="submit" class="btn btn-danger ">Cancelar</button>
+     <a href="Biblioteca_Grilla.html" class="btn btn-danger">Cancelar</a>
   </div>
    <div class="form-group col-md-4">
     <button type="submit" class="btn btn-primary">Aceptar</button>

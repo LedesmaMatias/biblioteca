@@ -7,5 +7,5 @@ public interface INegLibros {
 
 	public Result cargarTablaDefault();
 	
-	public Libros obtenerPorISBN(int ISBN);
+	public Libros obtenerPorISBN(String ISBN);
 }

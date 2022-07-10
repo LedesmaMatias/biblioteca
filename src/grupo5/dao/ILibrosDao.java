@@ -10,7 +10,7 @@ public interface ILibrosDao {
 	
 	public boolean cartarTablaDefault(Set<Libros> libros);
 	
-	public Libros obtenerPorISBN(int ISBN);
+	public Libros obtenerPorISBN(String ISBN);
 	
 	
 

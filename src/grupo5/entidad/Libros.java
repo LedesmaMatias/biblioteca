@@ -116,6 +116,12 @@ public class Libros implements Serializable {
 		return Autor;
 	}
 
+	@Override
+	public String toString() {
+		return "Libros [ISBN=" + ISBN + ", Titulo=" + Titulo + ", FechaLanzamiento=" + FechaLanzamiento + ", Idioma="
+				+ Idioma + ", CantPaginas=" + CantPaginas + ", Descripcion=" + Descripcion +  ", Autor=" + Autor + "]";
+	}
+
 	public void setAutor(Autores autor) {
 		Autor = autor;
 	}
@@ -136,5 +142,6 @@ public class Libros implements Serializable {
 		Generos = generos;
 		Autor = autor;
 	}
+	
 
 }

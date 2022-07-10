@@ -51,10 +51,12 @@ public class LibrosDao implements ILibrosDao {
 	}
 
 	@Override
-	public Libros obtenerPorISBN(int ISBN) {
+	public Libros obtenerPorISBN(String ISBN) {
 		Session session = conexion.abrirConexion();
 		Libros libros = (Libros) session.createQuery("FROM Libros WHERE ISBN=" + ISBN).uniqueResult();
 		conexion.cerrarSession();
 		return libros;
 	}
+
+	
 }

@@ -66,8 +66,8 @@ public class NegLibros implements INegLibros {
 	}
 
 	@Override
-	public Libros obtenerPorISBN(int ISBN) {
-		// TODO Auto-generated method stub
-		return null;
+	public Libros obtenerPorISBN(String ISBN) {
+		Libros libro = librosDao.obtenerPorISBN(ISBN);
+		return libro;
 	}
 }
