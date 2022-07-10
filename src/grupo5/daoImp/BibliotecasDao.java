@@ -1,5 +1,8 @@
 package grupo5.daoImp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -31,5 +34,20 @@ public class BibliotecasDao implements IBibliotecasDao {
 		}
 		conexion.cerrarSession();
 		return bool;
+	}
+
+	@Override
+	public List<Bibliotecas> obtenerTodos() {
+		Session session = conexion.abrirConexion();
+		List<Bibliotecas> listaLibros = new ArrayList<Bibliotecas>();
+		listaLibros = session.createQuery("from Bibliotecas").list();
+		conexion.cerrarSession();
+		return listaLibros;
+	}
+
+	@Override
+	public List<Bibliotecas> obtenerPorFiltro(int estado) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

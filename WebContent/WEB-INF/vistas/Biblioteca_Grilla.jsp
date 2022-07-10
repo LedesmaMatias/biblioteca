@@ -1,5 +1,8 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,10 +21,14 @@
 					<h2 class="font-weight-bold text-center text-info"> Libros en biblioteca </h2>
 				</div>
 				<div class="col-12 mt-2">
-				</div>
+			    	<label class="font-weight-bold text-center text-success  "> 
+			    	${ErrorMsj}    
+			    	</label>
+			    </div>
+				
 				<div class="col-12 mt-2">
 					<div>
-						<form action="Biblioteca_ABM.html" method="get" class="w-100">
+						<form action="Biblioteca_Obtener_Grilla.html" method="get" class="w-100">
 						<div class="form-row">
 							<div class="form-group col-md-2 ml-4">
 								<label for="ddlLibro">Estado de libro </label>
@@ -36,7 +43,7 @@
 								<button type="submit" class="btn btn-success">Mostrar</button>
 							</div>
 							<div class="form-group col-md-4 mt-4">
-								<button type="submit" name="btnAgregar" class="btn btn-success">Agregar libro en biblioteca</button>
+								<a href="Biblioteca_ABM.html" class="btn btn-success">Agregar libro en biblioteca</a>
 							</div>
 						</div>
 					</form>
@@ -54,36 +61,28 @@
 									</tr>
 								</thead>
 								<tbody>
+									
+									<c:forEach var="dato" items="${lista}" >
 									<tr>
-										<td>1</td>
-										<td>Instinto animal</td>
-										<td>26/06/2022</td>
-										<td>En biblioteca</td>
+										<td>${dato.getId()}</td>
+										<td>${dato.getLibro().getTitulo()}</td>
+										<td>${dato.getFechaAlta()}</td>
+										<td>
+										<c:choose>
+											<c:when test="${dato.getEstado()==1}">
+												En biblioteca
+											</c:when>
+											<c:otherwise>
+												Prestado
+											</c:otherwise>
+										</c:choose>
+										</td>
 										<td>
 											<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
                     						<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
 										</td>
 									</tr>
-									<tr>
-										<td>2</td>
-										<td>Instinto animal</td>
-										<td>23/06/2022</td>
-										<td>En biblioteca</td>
-										<td>
-											<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                    						<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-										</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>Instinto animal</td>
-										<td>26/06/2022</td>
-										<td>Prestado</td>
-										<td>
-											<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                    						<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-										</td>
-									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>

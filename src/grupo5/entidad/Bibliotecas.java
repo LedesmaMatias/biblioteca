@@ -45,4 +45,36 @@ public class Bibliotecas implements Serializable {
 		this.Estado = 1;
 	}
 
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public Date getFechaAlta() {
+		return FechaAlta;
+	}
+
+	public void setFechaAlta(Date fechaAlta) {
+		FechaAlta = fechaAlta;
+	}
+
+	public int getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(int estado) {
+		Estado = estado;
+	}
+
+	public Libros getLibro() {
+		return Libro;
+	}
+
+	public void setLibro(Libros libro) {
+		Libro = libro;
+	}
+
 }

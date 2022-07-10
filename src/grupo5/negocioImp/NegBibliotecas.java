@@ -1,5 +1,8 @@
 package grupo5.negocioImp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +29,12 @@ public class NegBibliotecas implements INegBibliotecas {
 			r.setMensaje("Ocurrio un error al agregar el libro a la biblioteca");
 		}
 		return r;
+	}
+
+	@Override
+	public List<Bibliotecas> obtenerTodos() {
+		List<Bibliotecas> libros = new ArrayList<Bibliotecas>();
+		libros = bibliotecasDao.obtenerTodos();
+		return libros;
 	}
 }

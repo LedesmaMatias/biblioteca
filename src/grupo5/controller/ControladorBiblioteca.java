@@ -3,6 +3,7 @@ package grupo5.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class ControladorBiblioteca {
 	public ModelAndView eventoRedireccionarBiblioteca_Grilla() {
 		ModelAndView MV = new ModelAndView();
 		MV.setViewName("Biblioteca_Grilla");
+		
+		List<Bibliotecas> libros = negBibliotecas.obtenerTodos();
+		MV.addObject("lista", libros.toArray());
 		return MV;
 	}
 
@@ -80,7 +84,9 @@ public class ControladorBiblioteca {
 		
 		//Si todo sale bien
 		MV.setViewName("Biblioteca_Grilla");
-		
+		List<Bibliotecas> libros = negBibliotecas.obtenerTodos();
+		MV.addObject("lista", libros.toArray());
+		MV.addObject("ErrorMsj", "Libro agregado a la biblioteca con exito");
 		
 		return MV;
 	}
