@@ -57,11 +57,11 @@
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="txtNombre">Nombre</label>
-      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" value=${txtNombre}>
+      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" value="${txtNombre}">
     </div>
     <div class="form-group col-md-2">
       <label for="txtApellido">Apellido</label>
-      <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" value=${txtApellido}>
+      <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" value="${txtApellido}">
     </div>
     
      <div class="form-group col-md-2">
@@ -106,6 +106,7 @@
                     <th>Localidad</th>
                     <th>Telefono</th>
                     <th>Fecha. Nac.</th>
+                        <th>Estado</th>
                      <th></th>
                 </tr>
             </thead>
@@ -125,12 +126,23 @@
                     <td>${dato.getLocalidad()}</td>
                     <td>${dato.getTelefono()}</td>
                     <td>${dato.getFechaNacimiento()}</td>             
+                            
                     
                         <td>
+                        
+                        <c:choose>
+    <c:when test="${dato.getEstado()==1}">
+        <a href="Clientes_ABM_CambiarEstado.html?IdCliente=${dato.getId()}" class="link-primary">Activo</a>
+        <br />
+    </c:when>    
+    <c:otherwise>
+       <a href="Clientes_ABM_CambiarEstado.html?IdCliente=${dato.getId()}" class="text-danger">Inactivo</a>
+        <br />
+    </c:otherwise>
+</c:choose>  </td>
+  <td>
                     <a href="Clientes_ABM_Editar.html?IdCliente=${dato.getId()}"  class="btn btn-success" ><i class="fas fa-edit"></i></a>
-                     <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-            
-                    </td>
+                                 </td>
                 </tr> 
                 
                 </c:forEach>         
