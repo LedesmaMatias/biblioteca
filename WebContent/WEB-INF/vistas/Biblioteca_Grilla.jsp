@@ -79,8 +79,8 @@
 										</td>
 										<td>
 											<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                    						<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-										</td>
+                    						<a href="Biblioteca_Baja.html?idBiblioteca=${dato.getId()}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                   						</td>
 									</tr>
 									</c:forEach>
 								</tbody>

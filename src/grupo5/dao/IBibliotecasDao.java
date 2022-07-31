@@ -6,7 +6,11 @@ import grupo5.entidad.Bibliotecas;
 
 public interface IBibliotecasDao {
 
-	public Boolean Guardar(Bibliotecas b);
+	public Boolean guardar(Bibliotecas b);
+	
+	public Boolean baja(Bibliotecas b);
+	
+	public Bibliotecas obtener(int id);
 	
 	public List<Bibliotecas> obtenerTodos();
 	

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import grupo5.daoImp.LibrosDao;
@@ -46,6 +47,19 @@ public class ControladorBiblioteca {
 	public ModelAndView eventoRedireccionarBiblioteca_ABM() {
 		ModelAndView MV = new ModelAndView();
 		MV.setViewName("Biblioteca_ABM");
+		return MV;
+	}
+	
+	@RequestMapping("Biblioteca_Baja.html")
+	public ModelAndView eventoEliminarLibroDeBiblioteca(Integer idBiblioteca) {
+		ModelAndView MV = new ModelAndView();
+		Result r = negBibliotecas.baja(idBiblioteca);
+		
+		List<Bibliotecas> libros = negBibliotecas.obtenerTodos();
+		MV.setViewName("Biblioteca_Grilla");
+		MV.addObject("lista", libros.toArray());
+		MV.addObject("ErrorMsj", r.getMensaje());
+		
 		return MV;
 	}
 	

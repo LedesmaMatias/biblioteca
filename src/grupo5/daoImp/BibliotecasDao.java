@@ -19,7 +19,7 @@ public class BibliotecasDao implements IBibliotecasDao {
 	private Conexion conexion;
 
 	@Override
-	public Boolean Guardar(Bibliotecas b) {
+	public Boolean guardar(Bibliotecas b) {
 		Session session = conexion.abrirConexion();
 		Transaction t = session.beginTransaction();
 		boolean bool = true;
@@ -49,5 +49,34 @@ public class BibliotecasDao implements IBibliotecasDao {
 	public List<Bibliotecas> obtenerPorFiltro(int estado) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Boolean baja(Bibliotecas b) {
+		Session session = conexion.abrirConexion();
+		Transaction t = session.beginTransaction();
+		Boolean flag = false;
+		try {
+			session.delete(b);
+			t.commit();
+			flag = true;
+		} catch(HibernateException e) {
+			t.rollback();
+			e.printStackTrace();
+		}
+		return flag;
+	}
+
+	@Override
+	public Bibliotecas obtener(int id) {
+		Session session = conexion.abrirConexion();
+		Bibliotecas b = new Bibliotecas();
+		try {
+			b = (Bibliotecas) session.get(Bibliotecas.class, id);
+		} catch(HibernateException e) {
+			e.printStackTrace();
+		}
+		conexion.cerrarSession();
+		return b;
 	}
 }

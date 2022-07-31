@@ -9,6 +9,8 @@ public interface INegBibliotecas {
 	
 	public Result alta(Bibliotecas b);
 	
+	public Result baja(int idBiblioteca);
+	
 	public List<Bibliotecas> obtenerTodos();
 
 }
