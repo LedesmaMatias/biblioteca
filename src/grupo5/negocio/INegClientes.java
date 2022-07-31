@@ -16,8 +16,4 @@ public interface INegClientes {
 	public Boolean VerificarDatos(int DNI);
 
 	public Result Modificar(Clientes c);
-
-	public Boolean VerificarPrestamos(int Id);
-
-	public Result CambiarEstado(int Idcliente);
 }

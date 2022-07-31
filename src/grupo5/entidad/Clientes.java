@@ -54,17 +54,6 @@ public class Clientes implements Serializable {
 	@Column(name = "FechaNacimiento")
 	private String FechaNacimiento;
 
-	public int getEstado() {
-		return Estado;
-	}
-
-	public void setEstado(int estado) {
-		Estado = estado;
-	}
-
-	@Column(name = "Estado")
-	private int Estado;
-	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

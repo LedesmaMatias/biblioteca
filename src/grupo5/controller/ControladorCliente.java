@@ -97,7 +97,7 @@ public class ControladorCliente {
 				txtTelefono, txtNac);
 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Clientes_Grilla");
+		mv.setViewName("Clientes_Grilla.html");
 
 		// Si sale todo bien
 		String ErrorMsj = "El cliente se agrego correctamente";
@@ -191,35 +191,5 @@ public class ControladorCliente {
 		return mv;
 
 	}
-	@RequestMapping("Clientes_ABM_CambiarEstado.html")
-	public ModelAndView evento_Clientes_CambiarEstado(Integer IdCliente,String txtNombre, String txtApellido, Integer txtDNI) {
-		
-		ModelAndView mv = new ModelAndView();
-	
-		// Si sale todo bien
-		String ErrorMsj = "El cliente se Modifico correctamente";
-		int ErrorCodigo = 0;
 
-		// intento guardar
-		Result r = NegCliente.CambiarEstado(IdCliente);
-
-		// Si hubo algun fallo me quedo en Clientes ABM e informo el error, sino me voy
-		// a la grilla
-		if (r.getCodigo() != 0) {
-
-			ErrorCodigo = r.getCodigo();
-			ErrorMsj = r.getMensaje();	
-		}
-	
-		
-		mv.addObject("txtApellido", txtApellido);
-		mv.addObject("txtDNI", txtDNI);
-		mv.addObject("txtNombre", txtNombre);
-		mv.addObject("ErroCodigo", ErrorCodigo);
-		mv.addObject("ErroMsj", ErrorMsj);
-
-		mv.setViewName("Clientes_Grilla");
-		
-	    return mv;
-	}
 }
