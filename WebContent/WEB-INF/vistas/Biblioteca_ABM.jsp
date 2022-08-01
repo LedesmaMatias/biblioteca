@@ -22,7 +22,7 @@
 	     
 	     <% 
 	  	
-	    String titulo= "Alta";
+	    String titulo= "Agregar";
 	    String Action ="Biblioteca_Alta.html";
 	    if(request.getParameter("btnAgregar")==null) 
 	    {
@@ -33,7 +33,7 @@
 	    }
 	    %>
 	     
-	     	<h2 class="font-weight-bold text-center text-info"> <%=titulo %> Libro en biblioteca </h2>
+	     	<h2 class="font-weight-bold text-center text-info"> <%=titulo %> Libro en biblioteca ${idBiblioteca} </h2>
 	     	
 	     	
 	     </div>
@@ -50,11 +50,11 @@
   <div class="form-row justify-content-center">
     <div class="form-group col-md-4">
       <label class="form-label" for="txtLibro">ISBN Libro</label>
-      <input type="text" class="form-control" name="txtLibro" placeholder="ISBN" value="${libro.getLibro().getISBN()}"required>
+      <input type="text" class="form-control" name="txtLibro" placeholder="ISBN" value="${ISBN}"required>
     </div>
     <div class="form-group col-md-4">
       <label class="form-label" for="dateFecha">Fecha de alta</label>
-      <input type="date" class="form-control" name="dateFecha" value="${libro.getFechaAlta().toString()}" required>
+      <input type="date" class="form-control" name="dateFecha" value="${fecha}" required>
     </div>
    </div>
    

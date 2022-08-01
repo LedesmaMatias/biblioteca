@@ -78,7 +78,7 @@
 										</c:choose>
 										</td>
 										<td>
-											<a href="Biblioteca_ABM_Modificar?idBiblioteca=${dato.getId()}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+											<a href="Biblioteca_ABM_Modificar.html?idBiblioteca=${dato.getId()}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                     						<a href="Biblioteca_Baja.html?idBiblioteca=${dato.getId()}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                    						</td>
 									</tr>

@@ -87,7 +87,12 @@ function limpiarbusqueda() {
                     <td>${dato.getFechaLanzamiento()}</td>
                     <td>${dato.getCantPaginas()}</td>
                     
-                 <td>genero no anda</td>
+                 <td>
+                 	<c:forEach var="genero" items="${dato.getGeneros()}" >
+                 		${genero.getDescripcion()},
+                 
+                 	</c:forEach>
+                 </td>
                    
                     
                   </tr>

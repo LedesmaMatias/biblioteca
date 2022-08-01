@@ -2,6 +2,7 @@ package grupo5.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -67,10 +68,15 @@ public class ControladorBiblioteca {
 	public ModelAndView eventoRedireccionarBiblioteca_ABM_Modificar(Integer idBiblioteca) {
 		ModelAndView MV = new ModelAndView();
 		Bibliotecas libro = negBibliotecas.obtener(idBiblioteca);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(libro.getFechaAlta());
+		String fecha= calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.MONTH) + "/" +  calendar.get(Calendar.YEAR);
 		
 		MV.setViewName("Biblioteca_ABM");
-		MV.addObject("libro", libro);
+		MV.addObject("ISBN", libro.getLibro().getISBN());
 		MV.addObject("idBiblioteca", idBiblioteca);
+		MV.addObject("fecha", fecha);
+		
 		
 		return MV;
 	}
@@ -78,7 +84,7 @@ public class ControladorBiblioteca {
 	@RequestMapping("Biblioteca_Modificar.html")
 	public ModelAndView eventoModificarLibroEnBiblioteca(Integer idBiblioteca, String txtLibro, String dateFecha) {
 		ModelAndView MV = new ModelAndView();
-		SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formato = new SimpleDateFormat("yyy-MM-dd");
 		Date date = new Date(System.currentTimeMillis());
 		
 		
@@ -87,6 +93,8 @@ public class ControladorBiblioteca {
 		// Compruebo si el libro existe
 		if(Objects.isNull(libro)) {
 			MV.setViewName("Biblioteca_ABM");
+			MV.addObject("idBiblioteca", idBiblioteca);
+			MV.addObject("fecha", dateFecha);
 			MV.addObject("ErrorMsj", "El libro no existe en la base de datos");
 			return MV;
 		}
@@ -97,6 +105,7 @@ public class ControladorBiblioteca {
 		} catch (ParseException e) {
 			e.printStackTrace();
 			MV.setViewName("Biblioteca_ABM");
+			MV.addObject("idBiblioteca", idBiblioteca);
 			MV.addObject("ErrorMsj","Error con la fecha ingresada");
 			return MV;
 		}
@@ -122,7 +131,7 @@ public class ControladorBiblioteca {
 	@RequestMapping("Biblioteca_Alta.html")
 	public ModelAndView eventoNuevoLibroEnBiblioteca(String txtLibro, String dateFecha) {
 		ModelAndView MV = new ModelAndView();
-		SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formato = new SimpleDateFormat("yyy-MM-dd");
 		Date date = new Date(System.currentTimeMillis());
 		
 		Libros libro = negLibros.obtenerPorISBN(txtLibro);

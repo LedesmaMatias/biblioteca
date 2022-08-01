@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -44,7 +45,7 @@ public class Libros implements Serializable {
 	@Column(name = "Descripcion")
 	private String Descripcion;
 
-	@ManyToMany(cascade = { CascadeType.REFRESH })
+	@ManyToMany(fetch= FetchType.EAGER, cascade = { CascadeType.REFRESH })
 	@JoinTable(name = "Libros_x_Generos", joinColumns = { @JoinColumn(name = "ISBN_Libro") }, inverseJoinColumns = {
 			@JoinColumn(name = "IdGenero") })
 	private Set<Generos> Generos = new HashSet<Generos>();
