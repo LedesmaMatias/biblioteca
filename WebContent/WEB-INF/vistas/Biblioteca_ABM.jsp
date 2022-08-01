@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +20,20 @@
 	 
 	     <div class="col-12 mt-2">
 	     
-	     	<h2 class="font-weight-bold text-center text-info"> Libros en biblioteca </h2>
+	     <% 
+	  	
+	    String titulo= "Alta";
+	    String Action ="Biblioteca_Alta.html";
+	    if(request.getParameter("btnAgregar")==null) 
+	    {
+	    	Integer idBiblioteca = (Integer) request.getAttribute("idBiblioteca");
+	    	titulo = "Editar";
+		    Action = "Biblioteca_Modificar.html?idBiblioteca=" + idBiblioteca;
+	    	
+	    }
+	    %>
+	     
+	     	<h2 class="font-weight-bold text-center text-info"> <%=titulo %> Libro en biblioteca </h2>
 	     	
 	     	
 	     </div>
@@ -30,16 +45,16 @@
      	${ErrorMsj}    
      	</label>
      </div>
-	     
-<form action="Biblioteca_Alta.html" method="post" >
+
+<form action="<%=Action %>" method="post" >
   <div class="form-row justify-content-center">
     <div class="form-group col-md-4">
       <label class="form-label" for="txtLibro">ISBN Libro</label>
-      <input type="text" class="form-control" name="txtLibro" placeholder="ISBN" required>
+      <input type="text" class="form-control" name="txtLibro" placeholder="ISBN" value="${libro.getLibro().getISBN()}"required>
     </div>
     <div class="form-group col-md-4">
       <label class="form-label" for="dateFecha">Fecha de alta</label>
-      <input type="date" class="form-control" name="dateFecha" required>
+      <input type="date" class="form-control" name="dateFecha" value="${libro.getFechaAlta().toString()}" required>
     </div>
    </div>
    

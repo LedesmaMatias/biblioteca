@@ -43,7 +43,7 @@
 								<button type="submit" class="btn btn-success">Mostrar</button>
 							</div>
 							<div class="form-group col-md-4 mt-4">
-								<a href="Biblioteca_ABM.html" class="btn btn-success">Agregar libro en biblioteca</a>
+								<a href="Biblioteca_ABM.html?btnAgregar=true" class="btn btn-success">Agregar libro en biblioteca</a>
 							</div>
 						</div>
 					</form>
@@ -78,7 +78,7 @@
 										</c:choose>
 										</td>
 										<td>
-											<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+											<a href="Biblioteca_ABM_Modificar?idBiblioteca=${dato.getId()}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                     						<a href="Biblioteca_Baja.html?idBiblioteca=${dato.getId()}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                    						</td>
 									</tr>

@@ -11,6 +11,8 @@ public interface INegBibliotecas {
 	
 	public Result baja(int idBiblioteca);
 	
+	public Bibliotecas obtener(int id);
+	
 	public List<Bibliotecas> obtenerTodos();
 
 }

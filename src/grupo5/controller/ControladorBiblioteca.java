@@ -63,10 +63,66 @@ public class ControladorBiblioteca {
 		return MV;
 	}
 	
+	@RequestMapping("Biblioteca_ABM_Modificar.html")
+	public ModelAndView eventoRedireccionarBiblioteca_ABM_Modificar(Integer idBiblioteca) {
+		ModelAndView MV = new ModelAndView();
+		Bibliotecas libro = negBibliotecas.obtener(idBiblioteca);
+		
+		MV.setViewName("Biblioteca_ABM");
+		MV.addObject("libro", libro);
+		MV.addObject("idBiblioteca", idBiblioteca);
+		
+		return MV;
+	}
+	
+	@RequestMapping("Biblioteca_Modificar.html")
+	public ModelAndView eventoModificarLibroEnBiblioteca(Integer idBiblioteca, String txtLibro, String dateFecha) {
+		ModelAndView MV = new ModelAndView();
+		SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+		Date date = new Date(System.currentTimeMillis());
+		
+		
+		Libros libro = negLibros.obtenerPorISBN(txtLibro);
+		
+		// Compruebo si el libro existe
+		if(Objects.isNull(libro)) {
+			MV.setViewName("Biblioteca_ABM");
+			MV.addObject("ErrorMsj", "El libro no existe en la base de datos");
+			return MV;
+		}
+		
+		// Parseo la fecha
+		try {
+			date = formato.parse(dateFecha);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			MV.setViewName("Biblioteca_ABM");
+			MV.addObject("ErrorMsj","Error con la fecha ingresada");
+			return MV;
+		}
+		
+		// Guardo el libro en la biblioteca
+		Bibliotecas biblioteca = new Bibliotecas(libro, date);
+		biblioteca.setId(idBiblioteca);
+		Result r = negBibliotecas.alta(biblioteca);
+		if(r.getCodigo() != 0) {
+			MV.setViewName("Biblioteca_ABM");
+			MV.addObject("ErrorMsj", r.getMensaje());
+		}
+		
+		//Si todo sale bien
+		MV.setViewName("Biblioteca_Grilla");
+		List<Bibliotecas> libros = negBibliotecas.obtenerTodos();
+		MV.addObject("lista", libros.toArray());
+		MV.addObject("ErrorMsj", "Libro modificado con exito");
+		
+		return MV;
+	}
+	
 	@RequestMapping("Biblioteca_Alta.html")
 	public ModelAndView eventoNuevoLibroEnBiblioteca(String txtLibro, String dateFecha) {
 		ModelAndView MV = new ModelAndView();
-		SimpleDateFormat formato = new SimpleDateFormat("yyy-MM-dd");
+		SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = new Date(System.currentTimeMillis());
 		
 		Libros libro = negLibros.obtenerPorISBN(txtLibro);
