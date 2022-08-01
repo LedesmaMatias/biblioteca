@@ -26,6 +26,22 @@ public class Generos implements Serializable {
 	@Column(name = "Descripcion")
 	private String Descripcion;
 
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public String getDescripcion() {
+		return Descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		Descripcion = descripcion;
+	}
+
 	public Generos() {
 	}
 
@@ -34,9 +50,9 @@ public class Generos implements Serializable {
 		this.Id = ID;
 		this.Descripcion = descripcion;
 	}
-	
+
 	public Generos(String descripcion) {
-		
+
 		this.Descripcion = descripcion;
 	}
 

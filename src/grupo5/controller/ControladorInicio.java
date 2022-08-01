@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import grupo5.entidad.Result;
-import grupo5.negocio.INegAutores;
 import grupo5.negocio.INegGeneros;
 import grupo5.negocio.INegLibros;
+import grupo5.negocio.INegUsuarios;
 import grupo5.negocioImp.NegAutores;
 import grupo5.negocioImp.NegNacionalidades;
 
@@ -17,17 +17,21 @@ import grupo5.negocioImp.NegNacionalidades;
 public class ControladorInicio {
 
 	@Autowired
+	@Qualifier("UsuariosServicio")
+	private INegUsuarios NegUsuarios;
+
+	@Autowired
 	@Qualifier("NacionalidadesServicio")
 	private NegNacionalidades NegNacionalidad;
-	
+
 	@Autowired
 	@Qualifier("AutoresServicio")
 	private NegAutores negAutores;
-	
+
 	@Autowired
 	@Qualifier("GenerosServicio")
 	private INegGeneros negGeneros;
-	
+
 	@Autowired
 	@Qualifier("LibrosServicio")
 	private INegLibros negLibros;
@@ -38,25 +42,36 @@ public class ControladorInicio {
 		MV.setViewName("index");
 		return MV;
 	}
-	
+
 	@RequestMapping("Login.html")
 	public ModelAndView eventoRedireccionarLogin() {
 		ModelAndView MV = new ModelAndView();
-		MV.setViewName("login");
+		MV.setViewName("Login");
+		Result r = NegUsuarios.CargarTablaDefault();
+		r.println();
 		return MV;
 	}
 
 	@RequestMapping("Main.html")
-	public ModelAndView eventoRedireccionarMain() {
+	public ModelAndView eventoRedireccionarMain(String txtUser, String txtPass) {
 		ModelAndView MV = new ModelAndView();
-		MV.setViewName("Main");
 
-		// Cargo las tablas parametros
-		cargarTablasPorDefecto();
+		boolean existe = NegUsuarios.VerificarUsuarios(txtUser, txtPass);
+
+		// Si existe el usuario
+		if (existe) {
+
+			MV.setViewName("Main");
+			// Cargo las tablas parametros
+			cargarTablasPorDefecto();
+		} else {
+			MV.addObject("ErrorMsj", "El usuario ingresado no existe o es incorrecto.");
+			MV.setViewName("Login");
+		}
 
 		return MV;
 	}
-	
+
 	private void cargarTablasPorDefecto() {
 		Result r = NegNacionalidad.CargarTablaDefault();
 		r.println();

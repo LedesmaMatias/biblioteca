@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,18 @@
 <title>Libros grilla</title>
 </head>
 <body>
+
+<script>
+
+function limpiarbusqueda() {  
+	  
+	  
+	 alert ("busqueda limpia");  
+	 $('#txtNombre').val(""); 
+	 $('#txtApellido').val(""); 
+	 $('#txtDNI').val(""); 
+ } 
+</script>
 
 <%@include file="Decoraciones/librerias.jsp" %>
 <%@include file="Decoraciones/header.jsp" %>
@@ -20,6 +33,34 @@
 				<div class="col-12 mt-2">
 				</div>
 				<div class="col-12 mt-2">
+				
+				 <div class="form-row">
+		    
+  <form  action="Libros_Grilla.html" method="get" class=" w-100" >	
+  
+   <div class="form-row">
+     
+    <div class="form-group col-md-2">
+      <label for="txtNombre">ISBN</label>
+      <input type="text" class="form-control" name="txtISBN" id="txtISBN" placeholder="ISBN" value="${txtISBN}">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="txtApellido">Titulo</label>
+      <input type="text" class="form-control" name="txtTitulo" id="txtTitulo" placeholder="Titulo" value="${txtTitulo}">
+    </div>
+         
+      <div class="form-group col-md-2 mt-4 pt-1">      
+         
+         <button type="submit" class="btn btn-success "> <i class="fas fa-search"></i> Buscar </button>
+         <button type="button"  class="btn btn-success " id="Limpiar" onclick="limpiarbusqueda();" > <i class="fas clean"></i>  Limpiar </button>
+    </div>
+    </div>	
+    </form>
+    
+  
+    
+  
+				
 					<div class="col-12 mt-2 mb-3">
 						<div class="bg-white border table-responsive table-striped">
 							<table class="table">
@@ -35,36 +76,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>Instinto animal</td>
-										<td>Rojo, Alfonso</td>
-										<td>Español</td>
-										<td>26/10/1998</td>
-										<td>345</td>
-										<td>policial</td>
-										
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>Estudio en escarlata</td>
-										<td>Conan Doyle, Arthur</td>
-										<td>Español</td>
-										<td>26/11/1887</td>
-										<td>185</td>
-										<td>policial</td>
-										
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>El ultimo deseo</td>
-										<td>sapkowski, Andrzej</td>
-										<td>Español</td>
-										<td>26/4/2002</td>
-										<td>286</td>
-										<td>fantasia</td>
-										
-									</tr>
+								
+    
+                <c:forEach var="dato" items="${lista}" >
+                  <tr>
+                    <td>${dato.getISBN()}</td>
+                    <td>${dato.getTitulo()}</td>
+                    <td>${dato.getAutor().nombre} ${dato.getAutor().apellido}</td>
+                    <td>${dato.getIdioma()}</td>
+                    <td>${dato.getFechaLanzamiento()}</td>
+                    <td>${dato.getCantPaginas()}</td>
+                    
+                 <td>genero no anda</td>
+                   
+                    
+                  </tr>
+                </c:forEach>   
+
 								</tbody>
 							</table>
 						</div>
