@@ -14,5 +14,7 @@ public interface INegBibliotecas {
 	public Bibliotecas obtener(int id);
 	
 	public List<Bibliotecas> obtenerTodos();
+	
+	public List<Bibliotecas> obtenerPorFiltro(Integer estado);
 
 }

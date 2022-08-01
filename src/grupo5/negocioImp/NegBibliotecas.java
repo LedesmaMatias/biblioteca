@@ -65,4 +65,15 @@ public class NegBibliotecas implements INegBibliotecas {
 		
 		return libro;
 	}
+
+	@Override
+	public List<Bibliotecas> obtenerPorFiltro(Integer estado) {
+		List<Bibliotecas> libros = new ArrayList<Bibliotecas>();
+		if(estado!=0) {
+			libros = bibliotecasDao.obtenerPorFiltro(estado);
+		} else {
+			libros = bibliotecasDao.obtenerTodos();
+		}
+		return libros;
+	}
 }

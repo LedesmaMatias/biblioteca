@@ -43,6 +43,15 @@ public class ControladorBiblioteca {
 		MV.addObject("lista", libros.toArray());
 		return MV;
 	}
+	
+	@RequestMapping("Biblioteca_Obtener_Grilla.html")
+	public ModelAndView eventoCargarGrilla(Integer estado) {
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("Biblioteca_Grilla");
+		List<Bibliotecas> libros = negBibliotecas.obtenerPorFiltro(estado);
+		MV.addObject("lista", libros.toArray());
+		return MV;
+	}
 
 	@RequestMapping("Biblioteca_ABM.html")
 	public ModelAndView eventoRedireccionarBiblioteca_ABM() {

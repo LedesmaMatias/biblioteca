@@ -32,11 +32,11 @@
 						<div class="form-row">
 							<div class="form-group col-md-2 ml-4">
 								<label for="ddlLibro">Estado de libro </label>
-								<select class="form-control" id="ddlLibro">
-								    <option>Seleccionar estado</option>
-								    <option>Todos</option>
-								    <option>En biblioteca</option> 
-								    <option>Prestados</option> 
+								<select class="form-control" name="estado" id="ddlEstado">
+								    <option value=0>Seleccionar estado</option>
+								    <option value=0>Todos</option>
+								    <option value=1>En biblioteca</option> 
+								    <option value=2>Prestados</option> 
 								</select>
 							</div>
 							<div class="form-group mt-4">

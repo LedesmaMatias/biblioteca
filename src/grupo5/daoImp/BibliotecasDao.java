@@ -47,8 +47,12 @@ public class BibliotecasDao implements IBibliotecasDao {
 
 	@Override
 	public List<Bibliotecas> obtenerPorFiltro(int estado) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = conexion.abrirConexion();
+		String query = "select l from Bibliotecas l where l.Estado =" + estado;
+		List<Bibliotecas> listaLibros = new ArrayList<Bibliotecas>();
+		listaLibros = session.createQuery(query).list();
+		conexion.cerrarSession();
+		return listaLibros;
 	}
 
 	@Override
