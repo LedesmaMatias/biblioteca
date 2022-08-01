@@ -22,7 +22,7 @@
 				<div class="col-12 mt-2">
 					<div class="col-12 mt-2 mb-3">
 					<div class="form-group col-md-2 mt-4 text-right">
-						<a href="Prestamos_Alta.html"  class="btn btn-success" >Agregar nuevo prestamo</a>
+						<a href="Prestamos_ABM.html"  class="btn btn-success" >Agregar nuevo prestamo</a>
 						</div>
 						<div class="bg-white border table-responsive table-striped">
 							<table class="table">
