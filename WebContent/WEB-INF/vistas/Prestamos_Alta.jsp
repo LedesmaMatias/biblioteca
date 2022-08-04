@@ -18,43 +18,50 @@
 	 
 	     <div class="col-12 mt-2">
 	     
+	     <% 
+	  	
+	    String titulo= "Agregar";
+	    String Action ="Prestamos_Alta.html";
+	    if(request.getParameter("btnAgregar")==null) 
+	    {
+	    	Integer idPrestamo = (Integer) request.getAttribute("idPrestamo");
+	    	titulo = "Editar";
+		    Action = "Prestamos_Modificar.html?idPrestamo=" + idPrestamo;
+	    	
+	    }
+	    %>
+	     
 	     	<h2 class="font-weight-bold text-center text-info"> Agregar Prestamo </h2>
-	     	
+	     	<label class="font-weight-bold text-center text-danger  "> 
+     	${ErrorMsj}    
+     	</label>
 	     	
 	     </div>
 	 <div class="justify-content-center">
-	 <form class="row g-3" action="">
+	 <form class="row g-3" action="<%=Action%>">
 	 	<div class="form-group col-md-6 pt-2">
-	 		<label for="cboIDBiblioteca">Biblioteca</label>
-        <select name="cboIDBiblioteca" class="form-control">
-        	<option value="1">1</option>
-        	<option value="2">2</option>
-        	<option value="3">3</option>
-		</select>
+	 		<label for="txtBiblioteca">ID libro en biblioteca</label>
+        <input type="text" class="form-control" name="txtBiblioteca" placeholder="ID Biblioteca" value="${idBiblioteca}" required>
 	 	</div>
 	 	<div class="form-group col-md-6 pt-2">
 	 		<label for="dateFecha">Fecha de Prestamo</label>
-      <input type="date" class="form-control" name="dateFecha">
+      <input type="date" class="form-control" name="dateFecha" required>
     
 	 	</div>
 	 	<div class="form-group col-md-2">
-	 		<label for="cantDias">Cantidad de dias</label>
-      <input type="text" class="form-control" name="txtLibro"/>
+	 		<label for="txtDias">Cantidad de dias</label>
+      <input type="text" class="form-control" name="txtDias" value="${cantDias}" required/>
    
 	 	</div>
 	 	<div class="form-group col-md-4">
-	 		<label for="cboIDCliente">Cliente</label>
-        <select name="cboIDCliente" class="form-control">
-        	<option value="1">1</option>
-        	<option value="2">2</option>
-        	<option value="3">3</option>
-		</select>
+	 		<label for="txtCliente">Cliente</label>
+        <input type="text" class="form-control" name="txtCliente" placeholder="ID Cliente" value="${idCliente}" required>
 	 	</div>
 	 	<div class="col-md-6">
 	 	</div>
 	 	
      <div class="form-group col-md-2">
-     <button type="submit" class="btn btn-danger ">Cancelar</button>
+     <a href="Prestamos_Grilla.html" class="btn btn-danger">Cancelar</a>
   </div>
    <div class="form-group col-md-2">
     <button type="submit" class="btn btn-primary">Aceptar</button>
@@ -64,50 +71,7 @@
 	 </form>
 	 	</div>
 	 
-	    <!--   
-<form action="" method="get" >
-  <div class="justify-content-center">
-    <div class="form-group col-9">
-    	<label for="cboIDBiblioteca">Biblioteca</label>
-        <select name="cboIDBiblioteca" class="form-control">
-        	<option value="1">1</option>
-        	<option value="2">2</option>
-        	<option value="3">3</option>
-		</select>
-    </div>
-    <div class="form-group col-9">
-      <label for="dateFecha">Fecha de Prestamo</label>
-      <input type="date" class="form-control" name="dateFecha">
-    </div>
-   </div>
-   <div class="form-group col-9">
-      <label for="cantDias">Cantidad de dias</label>
-      <input type="text" class="form-control" name="txtLibro"/>
-    </div>
-    <div class="form-group col-9">
-    	<label for="cboIDCliente">Cliente</label>
-        <select name="cboIDCliente" class="form-control">
-        	<option value="1">1</option>
-        	<option value="2">2</option>
-        	<option value="3">3</option>
-		</select>
-    </div>
-   
-   
-    <div class="form-row justify-content-center">
-
-     <div class="form-group col-md-4">
-     <button type="submit" class="btn btn-danger ">Cancelar</button>
-  </div>
-   <div class="form-group col-md-4">
-    <button type="submit" class="btn btn-primary">Aceptar</button>
-  </div>
-
-   </div>
-   
- 
-  
-</form> -->
+	    
 
          
 	     

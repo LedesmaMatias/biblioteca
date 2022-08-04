@@ -11,5 +11,7 @@ public interface INegPrestamos {
 	
 	public Result baja(int idPrestamo);
 	
+	public Prestamos obtener(int id);
+	
 	public List<Prestamos> obtenerTodos();
 }

@@ -52,8 +52,15 @@ public class PrestamosDao implements IPrestamosDao {
 
 	@Override
 	public Prestamos obtener(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = conexion.abrirConexion();
+		Prestamos p = new Prestamos();
+		try {
+			p = (Prestamos) session.get(Prestamos.class, id);
+		} catch(HibernateException e) {
+			e.printStackTrace();
+		}
+		conexion.cerrarSession();
+		return p;
 	}
 
 	@Override

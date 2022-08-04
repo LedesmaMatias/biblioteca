@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,58 +19,45 @@
 					<h2 class="font-weight-bold text-center text-info"> Prestamos </h2>
 				</div>
 				<div class="col-12 mt-2">
+				<label class="font-weight-bold text-center text-success  "> 
+			    	${ErrorMsj}    
+			    	</label>
 				</div>
 				<div class="col-12 mt-2">
 					<div class="col-12 mt-2 mb-3">
 					<div class="form-group col-md-2 mt-4 text-right">
-						<a href="Prestamos_ABM.html"  class="btn btn-success" >Agregar nuevo prestamo</a>
+						<a href="Prestamos_ABM.html?btnAgregar=true"  class="btn btn-success" >Agregar nuevo prestamo</a>
 						</div>
 						<div class="bg-white border table-responsive table-striped">
 							<table class="table">
 								<thead>
 									<tr class="text-info">
-										<th>ID</th>
-										<th>Biblioteca</th>
+										<th>ID Prestamo</th>
+										<th>ID Cliente</th>
+										<th>Libro en Biblioteca</th>
 										<th>Fecha del prestamo</th>
 										<th>Cantidad de dias</th>
-										<th>Cliente</th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>2</td>
-										<td>27/06/2022</td>
-										<td>10</td>
-										<td>3</td>
-										<td>
-											<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                    						<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-										</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>3</td>
-										<td>03/07/2022</td>
-										<td>15</td>
-										<td>1</td>
-										<td>
-											<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                    						<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-										</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>2</td>
-										<td>01/07/2022</td>
-										<td>20</td>
-										<td>2</td>
-										<td>
-											<button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                    						<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-										</td>
-									</tr>
+								
+								<c:forEach var="dato" items="${lista}">
+								
+								<tr>
+									<td>${dato.getId()}</td>
+									<td>${dato.getCliente().getId()}
+									<td>${dato.getBiblioteca().getId()}</td>
+									<td>${dato.getFechaPrestamo()}</td>
+									<td>${dato.getCantDias()}</td>
+									<td>
+										<a href="" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                   						<a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                  						</td>
+								</tr>
+								
+								</c:forEach>
+									
 								</tbody>
 							</table>
 						</div>

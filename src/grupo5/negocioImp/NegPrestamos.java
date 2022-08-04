@@ -56,4 +56,10 @@ public class NegPrestamos implements INegPrestamos {
 		prestamos = prestamosDao.obtenerTodos();
 		return prestamos;
 	}
+
+	@Override
+	public Prestamos obtener(int id) {
+		Prestamos prestamo = prestamosDao.obtener(id);
+		return prestamo;
+	}
 }

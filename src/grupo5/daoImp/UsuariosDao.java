@@ -2,6 +2,7 @@ package grupo5.daoImp;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +27,13 @@ public class UsuariosDao implements IUsuariosDao {
 
 		try {
 
-			session.save(user); // Guardo en base
-
-		} catch (Exception e) {
+			session.saveOrUpdate(user); // Guardo en base
+			tx.commit();
+		} catch (HibernateException e) {
 			aux = false;// por si algo sale mal
 			tx.rollback();
 		}
 
-		tx = session.getTransaction(); // Commit de la trans
-		tx.commit();
 		conexion.cerrarSession();
 
 		return aux;

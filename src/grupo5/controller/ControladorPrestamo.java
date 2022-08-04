@@ -29,4 +29,10 @@ public class ControladorPrestamo {
 		MV.setViewName("Prestamos_Alta");
 		return MV;
 	}
+	
+	@RequestMapping("Prestamos_Alta.html")
+	public ModelAndView eventoNuevoPrestamo() {
+		ModelAndView MV = new ModelAndView();
+		return MV;
+	}
 }
