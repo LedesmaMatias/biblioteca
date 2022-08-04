@@ -51,8 +51,8 @@
 									<td>${dato.getFechaPrestamo()}</td>
 									<td>${dato.getCantDias()}</td>
 									<td>
-										<a href="" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                   						<a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+										<a href="Prestamos_ABM_Modificar.html?idPrestamo=${dato.getId()}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                   						<a href="Prestamos_Baja.html?idPrestamo=${dato.getId()}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                   						</td>
 								</tr>
 								

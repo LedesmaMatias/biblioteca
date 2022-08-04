@@ -44,6 +44,13 @@ public class Prestamos implements Serializable {
 	public Prestamos() {
 
 	}
+	
+	public Prestamos(Date fechaPrestamo, int cantDias, Clientes cliente, Bibliotecas biblioteca) {
+		this.FechaPrestamo = fechaPrestamo;
+		this.CantDias = cantDias;
+		this.Cliente = cliente;
+		this.Biblioteca = biblioteca;
+	}
 
 	public int getId() {
 		return Id;
