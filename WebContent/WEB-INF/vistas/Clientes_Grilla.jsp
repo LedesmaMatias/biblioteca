@@ -17,7 +17,7 @@
 function limpiarbusqueda() {  
 	  
 	  
-	 alert ("busqueda limpia");  
+	
 	 $('#txtNombre').val(""); 
 	 $('#txtApellido').val(""); 
 	 $('#txtDNI').val(""); 
@@ -97,7 +97,9 @@ function limpiarbusqueda() {
     <div class="form-group col-md-2 mt-4 text-right">
     
        <a href="Clientes_ABM.html?btnAgregar=true"  class="btn btn-success" >Agregar <i class="fas fa-plus"></i></a> 
+           <a href="Main.html?btnAgregar=true"  class="btn btn-info text-right" >Atras <i class="fas fa-arrow-left "></i></a> 
     </div>
+    
     
   </div>
   
@@ -123,7 +125,7 @@ function limpiarbusqueda() {
                     <th>Telefono</th>
                     <th>Fecha. Nac.</th>
                         <th>Estado</th>
-                     <th></th>
+                     <th>Editar</th>
                 </tr>
             </thead>
             <tbody>

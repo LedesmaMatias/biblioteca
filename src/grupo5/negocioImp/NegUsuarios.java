@@ -28,7 +28,13 @@ public class NegUsuarios implements INegUsuarios {
 
 		user.setUser("Admin");
 		user.setPass("123");
-		Boolean Respuesta = UsuariosDao.CargarTablaDefault(user); // Cargo la tabla deefault
+
+		Boolean Respuesta = true;
+		if (!VerificarUsuarios("Admin", "123")) {
+
+			Respuesta = UsuariosDao.CargarTablaDefault(user); // Cargo la tabla deefault
+
+		}
 
 		if (Respuesta == false) {
 			r.setCodigo(1);

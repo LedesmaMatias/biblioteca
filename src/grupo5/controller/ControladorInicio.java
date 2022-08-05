@@ -48,19 +48,18 @@ public class ControladorInicio {
 		ModelAndView MV = new ModelAndView();
 		MV.setViewName("Login");
 		Result r = NegUsuarios.CargarTablaDefault();
-		r.println();
+
 		return MV;
 	}
 
-	@RequestMapping("Main.html")
-	public ModelAndView eventoRedireccionarMain(String txtUser, String txtPass) {
+	@RequestMapping("ValidarLogin.html")
+	public ModelAndView eventoValidarLogin(String txtUser, String txtPass) {
 		ModelAndView MV = new ModelAndView();
 
 		boolean existe = NegUsuarios.VerificarUsuarios(txtUser, txtPass);
 
 		// Si existe el usuario
 		if (existe) {
-
 			MV.setViewName("Main");
 			// Cargo las tablas parametros
 			cargarTablasPorDefecto();
@@ -68,6 +67,15 @@ public class ControladorInicio {
 			MV.addObject("ErrorMsj", "El usuario ingresado no existe o es incorrecto.");
 			MV.setViewName("Login");
 		}
+
+		return MV;
+	}
+
+	@RequestMapping("Main.html")
+	public ModelAndView eventoRedireccionarMain() {
+		ModelAndView MV = new ModelAndView();
+
+		MV.setViewName("Main");
 
 		return MV;
 	}

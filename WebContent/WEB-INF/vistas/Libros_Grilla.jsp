@@ -14,10 +14,10 @@
 function limpiarbusqueda() {  
 	  
 	  
-	 alert ("busqueda limpia");  
-	 $('#txtNombre').val(""); 
-	 $('#txtApellido').val(""); 
-	 $('#txtDNI').val(""); 
+	 
+	 $('#txtISBN').val(""); 
+	 $('#txtTitulo').val(""); 
+	
  } 
 </script>
 
@@ -54,6 +54,18 @@ function limpiarbusqueda() {
          <button type="submit" class="btn btn-success "> <i class="fas fa-search"></i> Buscar </button>
          <button type="button"  class="btn btn-success " id="Limpiar" onclick="limpiarbusqueda();" > <i class="fas clean"></i>  Limpiar </button>
     </div>
+    
+    <div class="form-group col-md-4 mt-4 text-right">
+    
+     
+    </div>
+    
+      <div class="form-group col-md-2 mt-4 text-right">
+    
+       <a href="Main.html"  class="btn btn-info text-right" >Atras <i class="fas fa-arrow-left "></i></a> 
+    </div>
+    
+    
     </div>	
     </form>
     
@@ -88,8 +100,15 @@ function limpiarbusqueda() {
                     <td>${dato.getCantPaginas()}</td>
                     
                  <td>
-                 	<c:forEach var="genero" items="${dato.getGeneros()}" >
-                 		${genero.getDescripcion()},
+                 	<c:forEach var="genero" items="${dato.getGeneros()}" varStatus="stat" >
+                 		
+                 		 <c:if test="${stat.first}">
+					       ${genero.getDescripcion()}
+					    </c:if>
+					    <c:if test="${!stat.first}">
+					    - ${genero.getDescripcion()}
+					    </c:if>
+                 		
                  
                  	</c:forEach>
                  </td>

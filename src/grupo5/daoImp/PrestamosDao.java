@@ -26,7 +26,7 @@ public class PrestamosDao implements IPrestamosDao {
 		try {
 			session.saveOrUpdate(p);
 			t.commit();
-		} catch(HibernateException e) {
+		} catch (HibernateException e) {
 			bool = false;
 			t.rollback();
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class PrestamosDao implements IPrestamosDao {
 		try {
 			session.delete(p);
 			t.commit();
-		} catch(HibernateException e) {
+		} catch (HibernateException e) {
 			bool = false;
 			t.rollback();
 			e.printStackTrace();
@@ -56,7 +56,7 @@ public class PrestamosDao implements IPrestamosDao {
 		Prestamos p = new Prestamos();
 		try {
 			p = (Prestamos) session.get(Prestamos.class, id);
-		} catch(HibernateException e) {
+		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
 		conexion.cerrarSession();
@@ -70,5 +70,27 @@ public class PrestamosDao implements IPrestamosDao {
 		listaPrestamos = session.createQuery("from Prestamos").list();
 		conexion.cerrarSession();
 		return listaPrestamos;
+	}
+
+	@Override
+	public List<Prestamos> ObtenerFiltros(Integer Id, Integer IdCliente) {
+
+		Session session = conexion.abrirConexion();
+
+		// Traigo el Prestamo con el Id especifico y si el Id es 0 traigo todos
+		String Query = "select p from Prestamos p where " + "(p.Id = " + Id + " or 0 = " + Id + ")  ";
+
+		// Para los demas campos consulto solo si no vienen vacios
+		if (IdCliente != 0) {
+			Query += " and (p.Cliente = " + IdCliente + ")";
+		}
+
+		List<Prestamos> PrestamosLista = new ArrayList<Prestamos>();
+
+		PrestamosLista = session.createQuery(Query).list();
+
+		conexion.cerrarSession();
+
+		return PrestamosLista;
 	}
 }

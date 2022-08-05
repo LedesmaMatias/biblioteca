@@ -18,5 +18,6 @@
         <mapping class="grupo5.entidad.Libros"/>
         <mapping class="grupo5.entidad.Nacionalidades"/>
         <mapping class="grupo5.entidad.Prestamos"/>
+          <mapping class="grupo5.entidad.Usuarios"/>
     </session-factory>
 </hibernate-configuration>

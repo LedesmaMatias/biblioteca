@@ -11,6 +11,13 @@
 </head>
 <body>
 
+<script language="javascript" type="text/javascript">
+    function submitDetailsForm() {
+    	
+       $("#formBiblio").submit();
+    }
+</script>
+
 <%@include file="Decoraciones/librerias.jsp" %>
 <%@include file="Decoraciones/header.jsp" %>
 
@@ -28,23 +35,57 @@
 				
 				<div class="col-12 mt-2">
 					<div>
-						<form action="Biblioteca_Obtener_Grilla.html" method="get" class="w-100">
+						<form id="formBiblio" action="Biblioteca_Obtener_Grilla.html" method="get" class="w-100">
 						<div class="form-row">
 							<div class="form-group col-md-2 ml-4">
 								<label for="ddlLibro">Estado de libro </label>
-								<select class="form-control" name="estado" id="ddlEstado">
-								    <option value=0>Seleccionar estado</option>
-								    <option value=0>Todos</option>
-								    <option value=1>En biblioteca</option> 
-								    <option value=2>Prestados</option> 
+								<select class="form-control" name="estado" id="ddlEstado" onchange="submitDetailsForm()">
+								  
+								   
+<c:choose>
+	<c:when test="${empty FiltroSelect }">
+		<option value=0 selected>Todos</option>
+		<option value=1>En biblioteca</option> 
+		<option value=2>Prestados</option> 
+	 </c:when>
+  	<c:when test="${FiltroSelect == 0}">
+		<option value=0 selected>Todos</option>
+		<option value=1>En biblioteca</option> 
+		<option value=2>Prestados</option> 
+	 </c:when>
+		<c:when test="${FiltroSelect == 1}">
+		<option value=0>Todos</option>
+		<option value=1 selected>En biblioteca</option> 
+		<option value=2>Prestados</option> 
+	 </c:when>
+	 <c:when test="${FiltroSelect == 2}">
+		<option value=0 >Todos</option>
+		<option value=1>En biblioteca</option> 
+		<option value=2 selected>Prestados</option> 
+	 </c:when>			 			 
+								  
+</c:choose>							    
+								    
+								    
 								</select>
 							</div>
-							<div class="form-group mt-4">
-								<button type="submit" class="btn btn-success">Mostrar</button>
+							
+							<div class="form-group col-md-2 ml-4 mt-4">
+								<button type="submit" class="btn btn-success mt-1">Buscar</button>
 							</div>
+							
+							
+							
 							<div class="form-group col-md-4 mt-4">
-								<a href="Biblioteca_ABM.html?btnAgregar=true" class="btn btn-success">Agregar libro en biblioteca</a>
+								
 							</div>
+							
+							<div class="form-group col-md-2 mt-4 text-right">
+    
+						       <a href="Biblioteca_ABM.html?btnAgregar=true"  class="btn btn-success" >Agregar Libro <i class="fas fa-plus"></i></a> 
+						           <a href="Main.html?btnAgregar=true"  class="btn btn-info text-right" >Atras <i class="fas fa-arrow-left "></i></a> 
+						    </div>
+						    
 						</div>
 					</form>
 					</div>

@@ -7,7 +7,26 @@
 <title>login</title>
 </head>
 <%@include file="Decoraciones/librerias.jsp" %>
-<%@include file="Decoraciones/header.jsp" %>
+
+
+ <nav class="bg-info navbar navbar-dark navbar-expand-lg">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto text-white text-center m-auto">
+    <div class="text-center "> <label>  Sistema Biblioteca Grupo 5 </label></div>
+    
+    </ul>
+    
+    
+    
+   
+  </div>
+</nav>
+
+
 <body>
 	<div class="row justify-content-center">
 	
@@ -24,12 +43,12 @@
      	</label>
      </div>
      
-		<form  action="Main.html" method="get">
+		<form  action="ValidarLogin.html" method="get">
 			<div class="text-center">
-				<input type="text" name="txtUser" class="mb-3 form-control" placeholder="Ingrese su usuario">
+				<input type="text" name="txtUser" class="mb-3 form-control" placeholder="Ingrese su usuario" required>
 			</div>
 			<div style="text-align: center;">
-				<input type="password" name="txtPass" class="mb-3 form-control" placeholder="Ingrese su contraseña">
+				<input type="password" name="txtPass" class="mb-3 form-control" placeholder="Ingrese su contraseña" required>
 			</div>
 			<div class="text-center">
 				<button type="submit" class="mb-3 btn btn-success">Aceptar</button>
