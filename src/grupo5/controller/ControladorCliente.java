@@ -28,7 +28,8 @@ public class ControladorCliente {
 	private NegNacionalidades NegNacionalidad;
 
 	@RequestMapping("Clientes_Grilla.html")
-	public ModelAndView eventoRedireccionarClientes_Grilla(String txtNombre, String txtApellido, Integer txtDNI, Integer estado) {
+	public ModelAndView eventoRedireccionarClientes_Grilla(String txtNombre, String txtApellido, Integer txtDNI,
+			Integer estado) {
 		ModelAndView mv = new ModelAndView();
 
 		// Parametros para la busqueda
@@ -43,8 +44,8 @@ public class ControladorCliente {
 		if (txtDNI == null) {
 			txtDNI = 0;
 		}
-		
-		if(estado == null) {
+
+		if (estado == null) {
 			estado = 2;
 		}
 
@@ -198,11 +199,13 @@ public class ControladorCliente {
 		return mv;
 
 	}
+
 	@RequestMapping("Clientes_ABM_CambiarEstado.html")
-	public ModelAndView evento_Clientes_CambiarEstado(Integer IdCliente,String txtNombre, String txtApellido, Integer txtDNI) {
-		
+	public ModelAndView evento_Clientes_CambiarEstado(Integer IdCliente, String txtNombre, String txtApellido,
+			Integer txtDNI) {
+
 		ModelAndView mv = new ModelAndView();
-	
+
 		// Si sale todo bien
 		String ErrorMsj = "El cliente se Modifico correctamente";
 		int ErrorCodigo = 0;
@@ -215,9 +218,9 @@ public class ControladorCliente {
 		if (r.getCodigo() != 0) {
 
 			ErrorCodigo = r.getCodigo();
-			ErrorMsj = r.getMensaje();	
+			ErrorMsj = r.getMensaje();
 		}
-	
+
 		List<Clientes> cl = NegCliente.ObtenerFiltros(0, 0, "", "", -1);
 		mv.addObject("txtApellido", txtApellido);
 		mv.addObject("txtDNI", txtDNI);
@@ -226,7 +229,7 @@ public class ControladorCliente {
 		mv.addObject("ErroMsj", ErrorMsj);
 		mv.addObject("lista", cl.toArray());
 		mv.setViewName("Clientes_Grilla");
-		
-	    return mv;
+
+		return mv;
 	}
 }

@@ -54,6 +54,13 @@ public class NegLibros implements INegLibros {
 			libros.add(new Libros("8401011809", "Instinto Animal", new Date(System.currentTimeMillis()), "Español", 349,
 					"Una maleta con un millon de dolares", generosLibro2, negAutores.obtenerPorId(1)));
 
+			Set<Generos> generosLibro4 = new HashSet<Generos>();
+			generosLibro4.add(negGeneros.obtenerPorDescripcion("Terror"));
+			generosLibro4.add(negGeneros.obtenerPorDescripcion("Suspenso"));
+			libros.add(new Libros("13131313", "It", new Date(System.currentTimeMillis()), "Ingles", 666,
+					"Un grupo de niños que son aterrorizados por un malvado monstruo", generosLibro4,
+					negAutores.obtenerPorId(4)));
+
 			if (!librosDao.cartarTablaDefault(libros)) {
 				r.setCodigo(2);
 				r.setMensaje("Ocurrio un error al cargar la tabla por defecto de libros");

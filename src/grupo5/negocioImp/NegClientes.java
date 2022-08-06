@@ -19,7 +19,7 @@ public class NegClientes implements INegClientes {
 	private IClientesDao ClientesDao;
 	@Autowired
 	private IPrestamosDao PrestamosDao;
-	
+
 	@Override
 	public List<Clientes> ObtenerFiltros(Integer Id, Integer DNI, String Nombre, String Apellido, Integer estado) {
 
@@ -91,28 +91,25 @@ public class NegClientes implements INegClientes {
 
 		return r; // devuelvo la respuesta
 	}
-	
+
 	@Override
 	public Boolean VerificarPrestamos(int Id) {
-		
+
 		List<Prestamos> PrestamosList = PrestamosDao.ObtenerFiltros(0, Id);
-		
-		if(PrestamosList.size()>0)
-		{
+
+		if (PrestamosList.size() > 0) {
 			return false;
 		}
-		
-		
+
 		return true;
 	}
 
-	
 	@Override
 	public Result CambiarEstado(int Idcliente) {
 
-		//Estado 1 = Activo
-		//Estado 2 = Inactivo.
-		
+		// Estado 1 = Activo
+		// Estado 2 = Inactivo.
+
 		Result r = new Result(0, "El cliente se agrego correctamente.");
 
 		Clientes Cliente = ClientesDao.ObtenerPorId(Idcliente); // Obtengo el Cliente de la base
@@ -120,25 +117,20 @@ public class NegClientes implements INegClientes {
 		// Modifico los datos
 		// Cliente.CopiarDatos(c);
 
-		if(Cliente.getEstado() ==1) //Si es 1 significa q esta activo y hay q inactivar
+		if (Cliente.getEstado() == 1) // Si es 1 significa q esta activo y hay q inactivar
 		{
-			//Verificamos que no tenga prestamos Activos
-			if(VerificarPrestamos(Idcliente))
-			{
+			// Verificamos que no tenga prestamos Activos
+			if (VerificarPrestamos(Idcliente)) {
 				Cliente.setEstado(0);
-			}
-			else
-			{
+			} else {
 				r.setCodigo(3);
 				r.setMensaje("No se puede Inactivar, el cliente tiene prestamos activos.");
 			}
-		}
-		else //Si es 0 esta inactivo y hay q activar
+		} else // Si es 0 esta inactivo y hay q activar
 		{
 			Cliente.setEstado(1);
 		}
-		
-		
+
 		boolean Respuesta = ClientesDao.Guardar(Cliente); // modifica el cliente
 
 		if (Respuesta == false) {

@@ -20,13 +20,14 @@ public class NegGeneros implements INegGeneros {
 	@Override
 	public Result cargarTablaDefault() {
 		Result r = new Result(0, "Generos agregados correctamente");
-		if(!generosDao.hayRegistros()) {
+		if (!generosDao.hayRegistros()) {
 			Set<Generos> generos = new HashSet<Generos>();
 			generos.add(new Generos("Policial"));
 			generos.add(new Generos("Suspenso"));
 			generos.add(new Generos("Fantasia"));
-			
-			if(!generosDao.cargarTablaDefault(generos)) {
+			generos.add(new Generos("Terror"));
+
+			if (!generosDao.cargarTablaDefault(generos)) {
 				r.setCodigo(2);
 				r.setMensaje("Ocurrio un error al cargar la tabla por defecto de generos");
 			}

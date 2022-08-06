@@ -39,8 +39,8 @@ public class ClientesDao implements IClientesDao {
 			Query += " and (c.Apellido like '%" + Apellido + "%')";
 
 		}
-		
-		if (estado==0 || estado ==1) {
+
+		if (estado == 0 || estado == 1) {
 			Query += " and (c.Estado = " + estado + ")";
 		}
 

@@ -64,7 +64,7 @@ public class Clientes implements Serializable {
 
 	@Column(name = "Estado")
 	private int Estado;
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -150,7 +150,7 @@ public class Clientes implements Serializable {
 	}
 
 	public Clientes() {
-
+		this.Estado = 1;
 	}
 
 	public Clientes(int Id, int DNI, String nombre, String apellido, grupo5.entidad.Nacionalidades nacionalidad,
@@ -166,6 +166,7 @@ public class Clientes implements Serializable {
 		Localidad = localidad;
 		Telefono = telefono;
 		FechaNacimiento = fecha_Nacimiento;
+		this.Estado = 1;
 	}
 
 	public void CopiarDatos(Clientes c) {
