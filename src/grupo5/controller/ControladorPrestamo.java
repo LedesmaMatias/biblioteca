@@ -82,12 +82,14 @@ public class ControladorPrestamo {
 		MV.setViewName("Prestamos_Alta");
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
+		Prestamos prestamo = negPrestamos.obtener(idPrestamo);
 		
-		//TODO: VALIDAR QUE TXTBIBLIOTECA SEA NUMERICO
-		Bibliotecas biblioteca = negBibliotecas.obtener(txtBiblioteca);
+		
+		Bibliotecas bibliotecaAnterior = negBibliotecas.obtener(prestamo.getBiblioteca().getId());
+		Bibliotecas bibliotecaNueva = negBibliotecas.obtener(txtBiblioteca);
 		Clientes cliente = negClientes.ObtenerPorId(txtCliente);
 		
-		if(Objects.isNull(biblioteca)) {
+		if(Objects.isNull(bibliotecaNueva)) {
 			
 			MV.addObject("ErrorMsj", "El libro en la biblioteca no existe");
 			return MV;
@@ -107,17 +109,28 @@ public class ControladorPrestamo {
 			return MV;
 		}
 		
-		//Modifico el estado del libro en biblioteca
-		biblioteca.setEstado(2);
-		Result r = negBibliotecas.alta(biblioteca);
+		// Libero el libro en biblioteca anterior
+		bibliotecaAnterior.setEstado(1);
+		Result r = negBibliotecas.alta(bibliotecaAnterior);
+		if(r.getCodigo() != 0) {
+			MV.addObject("ErrorMsj", r.getMensaje());
+			return MV;
+		}
+		
+		// Modifico el estado del libro en biblioteca
+		bibliotecaNueva.setEstado(2);
+		r = negBibliotecas.alta(bibliotecaNueva);
 		if(r.getCodigo() != 0) {
 			MV.addObject("ErrorMsj", r.getMensaje());
 			return MV;
 		}
 		
 		//Guardo el prestamo
-		Prestamos prestamo = new Prestamos(date, txtDias, cliente, biblioteca);
-		prestamo.setId(idPrestamo);
+		
+		prestamo.setFechaPrestamo(date);
+		prestamo.setCantDias(txtDias);
+		prestamo.setCliente(cliente);
+		prestamo.setBiblioteca(bibliotecaNueva);
 		r = negPrestamos.alta(prestamo);
 		if(r.getCodigo() != 0) {
 			MV.addObject("ErrorMsj", r.getMensaje());
@@ -126,6 +139,7 @@ public class ControladorPrestamo {
 		
 		MV.setViewName("Prestamos_Grilla");
 		List<Prestamos> prestamos = negPrestamos.obtenerTodos();
+		MV.addObject("idPrestamo", idPrestamo);
 		MV.addObject("lista", prestamos.toArray());
 		MV.addObject("ErrorMsj", "Prestamo agregado con exito");
 		return MV;
