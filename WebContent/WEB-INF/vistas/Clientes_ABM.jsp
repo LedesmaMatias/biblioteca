@@ -41,8 +41,8 @@
 			$('#txtDNI').focus();
 			return false;
 		}else 
-			if($('#txtDNI').val().length != 10){
-				alert("El campo DNI debe tener 10 digitos.");
+			if($('#txtDNI').val().length != 8){
+				alert("El campo DNI debe tener 8 digitos.");
 				$('#txtDNI').focus();
 				return false;
 			}
@@ -134,7 +134,7 @@
 	    <% 
 	    String titulo = "Editar";
 	    String Action = "Clientes_Editar.html";
-	    if(request.getParameter("btnAgregar")!=null) 
+	    if(request.getAttribute("btnAgregar")!=null || request.getParameter("btnAgregar")!= null) 
 	    {
 	    	titulo= "Alta";
 	    	Action ="Clientes_Alta.html";

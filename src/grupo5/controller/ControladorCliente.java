@@ -28,7 +28,7 @@ public class ControladorCliente {
 	private NegNacionalidades NegNacionalidad;
 
 	@RequestMapping("Clientes_Grilla.html")
-	public ModelAndView eventoRedireccionarClientes_Grilla(String txtNombre, String txtApellido, Integer txtDNI) {
+	public ModelAndView eventoRedireccionarClientes_Grilla(String txtNombre, String txtApellido, Integer txtDNI, Integer estado) {
 		ModelAndView mv = new ModelAndView();
 
 		// Parametros para la busqueda
@@ -43,14 +43,19 @@ public class ControladorCliente {
 		if (txtDNI == null) {
 			txtDNI = 0;
 		}
+		
+		if(estado == null) {
+			estado = 2;
+		}
 
 		// Obtenga la lista de clientes
-		List<Clientes> cl = NegCliente.ObtenerFiltros(0, txtDNI, txtNombre, txtApellido);
+		List<Clientes> cl = NegCliente.ObtenerFiltros(0, txtDNI, txtNombre, txtApellido, estado);
 
 		mv.addObject("lista", cl.toArray());
 		mv.addObject("txtApellido", txtApellido);
 		mv.addObject("txtDNI", txtDNI);
 		mv.addObject("txtNombre", txtNombre);
+		mv.addObject("FiltroSelect", estado);
 
 		mv.setViewName("Clientes_Grilla");
 		return mv;
@@ -95,6 +100,7 @@ public class ControladorCliente {
 		// Genero cliente para guardar en base
 		Clientes c = new Clientes(0, txtDNI, txtNombre, txtApellido, n, txteMail, txtDireccion, txtLocalidad,
 				txtTelefono, txtNac);
+		c.setEstado(1);
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Clientes_Grilla");
@@ -112,18 +118,19 @@ public class ControladorCliente {
 
 			ErrorCodigo = r.getCodigo();
 			ErrorMsj = r.getMensaje();
-
 			mv.setViewName("Clientes_ABM");
-
 			mv.addObject("ErroCodigo", ErrorCodigo);
 			mv.addObject("ErroMsj", ErrorMsj);
+			mv.addObject("btnAgregar", true);
+			List<Nacionalidades> NacioLista = NegNacionalidad.Obtener();
+			mv.addObject("NacioLista", NacioLista);
 
 			return mv;
 
 		}
 
 		// Obtenga la lista de clientes
-		List<Clientes> cl = NegCliente.ObtenerFiltros(0, txtDNI, txtNombre, txtApellido);
+		List<Clientes> cl = NegCliente.ObtenerFiltros(0, txtDNI, txtNombre, txtApellido, -1);
 
 		mv.addObject("lista", cl.toArray());
 		mv.addObject("txtApellido", txtApellido);
@@ -176,7 +183,7 @@ public class ControladorCliente {
 		}
 
 		// Obtenga la lista de clientes
-		List<Clientes> cl = NegCliente.ObtenerFiltros(0, txtDNI, txtNombre, txtApellido);
+		List<Clientes> cl = NegCliente.ObtenerFiltros(0, txtDNI, txtNombre, txtApellido, -1);
 
 		mv.addObject("lista", cl.toArray());
 		mv.addObject("txtApellido", txtApellido);
@@ -211,13 +218,13 @@ public class ControladorCliente {
 			ErrorMsj = r.getMensaje();	
 		}
 	
-		
+		List<Clientes> cl = NegCliente.ObtenerFiltros(0, 0, "", "", -1);
 		mv.addObject("txtApellido", txtApellido);
 		mv.addObject("txtDNI", txtDNI);
 		mv.addObject("txtNombre", txtNombre);
 		mv.addObject("ErroCodigo", ErrorCodigo);
 		mv.addObject("ErroMsj", ErrorMsj);
-
+		mv.addObject("lista", cl.toArray());
 		mv.setViewName("Clientes_Grilla");
 		
 	    return mv;

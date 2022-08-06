@@ -18,7 +18,7 @@ public class ClientesDao implements IClientesDao {
 	private Conexion conexion;
 
 	@Override
-	public List<Clientes> ObtenerFiltros(Integer Id, Integer DNI, String Nombre, String Apellido) {
+	public List<Clientes> ObtenerFiltros(Integer Id, Integer DNI, String Nombre, String Apellido, Integer estado) {
 
 		Session session = conexion.abrirConexion();
 
@@ -38,6 +38,10 @@ public class ClientesDao implements IClientesDao {
 		if (Apellido != "") {
 			Query += " and (c.Apellido like '%" + Apellido + "%')";
 
+		}
+		
+		if (estado==0 || estado ==1) {
+			Query += " and (c.Estado = " + estado + ")";
 		}
 
 		List<Clientes> ClientesLista = new ArrayList<Clientes>();

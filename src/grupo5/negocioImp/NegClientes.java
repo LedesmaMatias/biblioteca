@@ -21,9 +21,9 @@ public class NegClientes implements INegClientes {
 	private IPrestamosDao PrestamosDao;
 	
 	@Override
-	public List<Clientes> ObtenerFiltros(Integer Id, Integer DNI, String Nombre, String Apellido) {
+	public List<Clientes> ObtenerFiltros(Integer Id, Integer DNI, String Nombre, String Apellido, Integer estado) {
 
-		return ClientesDao.ObtenerFiltros(Id, DNI, Nombre, Apellido);
+		return ClientesDao.ObtenerFiltros(Id, DNI, Nombre, Apellido, estado);
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import grupo5.entidad.Result;
 
 public interface INegClientes {
 
-	public List<Clientes> ObtenerFiltros(Integer Id, Integer DNI, String Nombre, String Apellido);
+	public List<Clientes> ObtenerFiltros(Integer Id, Integer DNI, String Nombre, String Apellido, Integer estado);
 
 	public Result Alta(Clientes c);
 

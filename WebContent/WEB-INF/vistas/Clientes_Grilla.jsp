@@ -25,6 +25,8 @@ function limpiarbusqueda() {
 </script>
 
 
+
+
 <%@include file="Decoraciones/librerias.jsp" %>
 <%@include file="Decoraciones/header.jsp" %>
 
@@ -69,7 +71,7 @@ function limpiarbusqueda() {
      
      <div class="col-12 mt-2">
     
-  <form  action="Clientes_Grilla.html" method="get" class=" w-100" >
+  <form id="formCliente" action="Clientes_Grilla.html" method="get" class=" w-100" >
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="txtNombre">Nombre</label>
@@ -84,6 +86,39 @@ function limpiarbusqueda() {
       <label for="txtDNI">DNI</label>
       <input type="text" class="form-control" name="txtDNI" id="txtDNI" placeholder="DNI" value="${txtDNI}" >
     </div>
+    
+    <div class="form-group col-md-2 ml-4">
+								<label for="ddlEstado">Estado de cliente </label>
+								<select class="form-control" name="estado" id="ddlEstado">
+								  
+								   
+<c:choose>
+	<c:when test="${empty FiltroSelect }">
+		<option value=2 selected>Todos</option>
+		<option value=1>Activos</option> 
+		<option value=0>Inactivos</option> 
+	 </c:when>
+  	<c:when test="${FiltroSelect == 2}">
+		<option value=2 selected>Todos</option>
+		<option value=1>Activos</option> 
+		<option value=0>Inactivos</option> 
+	 </c:when>
+		<c:when test="${FiltroSelect == 1}">
+		<option value=2>Todos</option>
+		<option value=1 selected>Activos</option> 
+		<option value=0>Inactivos</option> 
+	 </c:when>
+	 <c:when test="${FiltroSelect == 0}">
+		<option value=2 >Todos</option>
+		<option value=1>Activos</option> 
+		<option value=0 selected>Inactivos</option> 
+	 </c:when>			 			 
+								  
+</c:choose>							    
+								    
+								    
+								</select>
+							</div>
     
       <div class="form-group col-md-2 mt-4 pt-1">      
          
